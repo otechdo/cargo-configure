@@ -1939,8 +1939,75 @@ pub const MASTER_BIG_INSTEAD_OF_MAP: ClippyLint = ClippyLint {
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
 };
 
+
+#[doc = "The blanket clippy restriction lints id"]
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_ID: &str = "blanket_clippy_restriction_lints";
+#[doc = "The blanket clippy restriction lints description"]
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_DESCRIPTION: &str = "Checks for warn/deny/forbid attributes targeting the whole clippy::restriction category.";
+#[doc = "The blanket clippy restriction lints know problem"]
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_KNOW_PROBLEM: Option<&'static str> = None;
+#[doc = "The blanket clippy restriction lints what it's bad"]
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_WHATS_BAD: &str = "Restriction lints sometimes are in contrast with other lints or even go against idiomatic rust. These lints should only be enabled on a lint-by-lint basis and with careful consideration.";
+#[doc = "The blanket clippy restriction lints uri issue"]
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blanket_clippy_restriction_lints");
+
+#[doc = "The blanket clippy restriction lints for novice"]
+pub const NOVICE_BLANKET_CLIPPY_RESTRICTION_LINTS: ClippyLint = ClippyLint {
+    id: BLANKET_CLIPPY_RESTRICTION_LINTS_ID,
+    description: BLANKET_CLIPPY_RESTRICTION_LINTS_DESCRIPTION,
+    whats_bad: BLANKET_CLIPPY_RESTRICTION_LINTS_WHATS_BAD,
+    known_problems: BLANKET_CLIPPY_RESTRICTION_LINTS_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Suspicious,
+    issue: BLANKET_CLIPPY_RESTRICTION_LINTS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+#[doc = "The blanket clippy restriction lints for expert"]
+pub const EXPERT_BLANKET_CLIPPY_RESTRICTION_LINTS: ClippyLint = ClippyLint {
+    id: BLANKET_CLIPPY_RESTRICTION_LINTS_ID,
+    description: BLANKET_CLIPPY_RESTRICTION_LINTS_DESCRIPTION,
+    whats_bad: BLANKET_CLIPPY_RESTRICTION_LINTS_WHATS_BAD,
+    known_problems: BLANKET_CLIPPY_RESTRICTION_LINTS_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Suspicious,
+    issue: BLANKET_CLIPPY_RESTRICTION_LINTS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+#[doc = "The blanket clippy restriction lints for master"]
+pub const MASTER_BLANKET_CLIPPY_RESTRICTION_LINTS: ClippyLint = ClippyLint {
+    id: BLANKET_CLIPPY_RESTRICTION_LINTS_ID,
+    description: BLANKET_CLIPPY_RESTRICTION_LINTS_DESCRIPTION,
+    whats_bad: BLANKET_CLIPPY_RESTRICTION_LINTS_WHATS_BAD,
+    known_problems: BLANKET_CLIPPY_RESTRICTION_LINTS_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Suspicious,
+    issue: BLANKET_CLIPPY_RESTRICTION_LINTS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 24] = [
+pub const NOVICE_LINTS: [ClippyLint; 25] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -1965,10 +2032,11 @@ pub const NOVICE_LINTS: [ClippyLint; 24] = [
     NOVICE_BAD_BIT_MASK,
     NOVICE_BIG_ENDIAN_BYTES,
     NOVICE_BIG_INSTEAD_OF_MAP,
+    NOVICE_BLANKET_CLIPPY_RESTRICTION_LINTS,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 24] = [
+pub const EXPERT_LINTS: [ClippyLint; 25] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -1993,10 +2061,11 @@ pub const EXPERT_LINTS: [ClippyLint; 24] = [
     EXPERT_BAD_BIT_MASK,
     EXPERT_BIG_ENDIAN_BYTES,
     EXPERT_BIG_INSTEAD_OF_MAP,
+    EXPERT_BLANKET_CLIPPY_RESTRICTION_LINTS,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 24] = [
+pub const MASTER_LINTS: [ClippyLint; 25] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -2021,6 +2090,7 @@ pub const MASTER_LINTS: [ClippyLint; 24] = [
     MASTER_BAD_BIT_MASK,
     MASTER_BIG_ENDIAN_BYTES,
     MASTER_BIG_INSTEAD_OF_MAP,
+    MASTER_BLANKET_CLIPPY_RESTRICTION_LINTS,
 ];
 
 #[doc = "Novice configuration filename"]
