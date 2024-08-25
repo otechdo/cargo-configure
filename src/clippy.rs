@@ -1260,9 +1260,76 @@ pub const MASTER_AS_PTR_CAST_MUT: ClippyLint = ClippyLint {
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
 };
 
+#[doc = "The assertions on constants id"]
+pub const ASSERTIONS_ON_CONSTANTS_ID: &str = "assertions_on_constants";
+#[doc = "The assertions on constants description"]
+pub const ASSERTIONS_ON_CONSTANTS_DESCRIPTION: &str = "Checks for assert!(true) and assert!(false) calls.";
+#[doc = "The assertions on constants know problem"]
+pub const ASSERTIONS_ON_CONSTANTS_PROBLEM: Option<&'static str> = None;
+#[doc = "The assertions on constants what it's bad"]
+pub const ASSERTIONS_ON_CONSTANTS_WHATS_BAD: &str = "Will be optimized out by the compiler or should probably be replaced by a panic!() or unreachable!()";
+#[doc = "The assertions on constants issue url"]
+pub const ASSERTIONS_ON_CONSTANTS_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_constants");
+
+#[doc = "The as ptr cast mut for novice"]
+pub const NOVICE_ASSERTIONS_ON_CONSTANTS: ClippyLint = ClippyLint {
+    id: ASSERTIONS_ON_CONSTANTS_ID,
+    description: ASSERTIONS_ON_CONSTANTS_DESCRIPTION,
+    whats_bad: ASSERTIONS_ON_CONSTANTS_WHATS_BAD,
+    known_problems: ASSERTIONS_ON_CONSTANTS_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Style,
+    url: ASSERTIONS_ON_CONSTANTS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The as ptr cast mut for expert"]
+pub const EXPERT_ASSERTIONS_ON_CONSTANTS: ClippyLint = ClippyLint {
+    id: ASSERTIONS_ON_CONSTANTS_ID,
+    description: ASSERTIONS_ON_CONSTANTS_DESCRIPTION,
+    whats_bad: ASSERTIONS_ON_CONSTANTS_WHATS_BAD,
+    known_problems: ASSERTIONS_ON_CONSTANTS_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Style,
+    url: ASSERTIONS_ON_CONSTANTS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The as ptr cast mut for master"]
+pub const MASTER_ASSERTIONS_ON_CONSTANTS: ClippyLint = ClippyLint {
+    id: ASSERTIONS_ON_CONSTANTS_ID,
+    description: ASSERTIONS_ON_CONSTANTS_DESCRIPTION,
+    whats_bad: ASSERTIONS_ON_CONSTANTS_WHATS_BAD,
+    known_problems: ASSERTIONS_ON_CONSTANTS_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Style,
+    url: ASSERTIONS_ON_CONSTANTS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
 
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 14] = [
+pub const NOVICE_LINTS: [ClippyLint; 15] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -1277,10 +1344,11 @@ pub const NOVICE_LINTS: [ClippyLint; 14] = [
     NOVICE_AS_UNDERSCORE,
     NOVICE_ASSERTIONS_ON_RESULTS,
     NOVICE_AS_PTR_CAST_MUT,
+    NOVICE_ASSERTIONS_ON_CONSTANTS,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 14] = [
+pub const EXPERT_LINTS: [ClippyLint; 15] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -1295,10 +1363,11 @@ pub const EXPERT_LINTS: [ClippyLint; 14] = [
     EXPERT_AS_UNDERSCORE,
     EXPERT_ASSERTIONS_ON_RESULTS,
     EXPERT_AS_PTR_CAST_MUT,
+    EXPERT_ASSERTIONS_ON_CONSTANTS,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 14] = [
+pub const MASTER_LINTS: [ClippyLint; 15] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -1312,7 +1381,8 @@ pub const MASTER_LINTS: [ClippyLint; 14] = [
     MASTER_AS_CONVERSIONS,
     MASTER_AS_UNDERSCORE,
     MASTER_ASSERTIONS_ON_RESULTS,
-    MASTER_AS_PTR_CAST_MUT
+    MASTER_AS_PTR_CAST_MUT,
+    MASTER_ASSERTIONS_ON_CONSTANTS
 ];
 
 #[doc = "Novice configuration filename"]
