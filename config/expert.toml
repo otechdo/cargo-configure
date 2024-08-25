@@ -328,8 +328,7 @@ use-clippy-severity = false
 #
 # This form of assertion does not show any of the information present in the Result other than which variant it isn’t.
 #
-# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states
-#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_state
 # Clippy decrease possible value none
 #
 # Clippy increase possible values : (warn, deny)
