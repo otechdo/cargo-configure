@@ -575,3 +575,28 @@ config-severity = "deny"
 clippy-severity = "deny"
 use-clippy-severity = false
 
+#
+# Lint clippy::big_endian_bytes
+#
+# Checks for the usage of the to_be_bytes method and/or the function from_be_bytes.
+#
+# To ensure use of little-endian or the target’s endianness rather than big-endian.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+big_endian_bytes
+#
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[big_endian_bytes]
+group = "restriction"
+applicability = "unspecified"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
+use-clippy-severity = false
+
