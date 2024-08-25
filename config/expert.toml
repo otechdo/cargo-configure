@@ -1,0 +1,255 @@
+#
+# Lint clippy::absolute_paths
+#
+# Checks for usage of items through absolute paths, like std::env::current_dir.
+#
+# Many codebases have their own style when it comes to importing, but one that is seldom used is using absolute paths everywhere.
+# 
+# This is generally considered unidiomatic, and you should add a use statement.
+# 
+# The default maximum segments (2) is pretty strict, you may want to increase this in clippy.toml.
+# Note: One exception to this is code from macro expansion - this does not lint such cases, as using absolute paths is the proper way of referencing items in one.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absolute_paths
+#value none
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[absolute_paths]
+group = "restriction"
+applicability = "unspecified"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
+use-clippy-severity = false
+
+#
+# Lint clippy::alloc_instead_of_core
+#
+# Finds items imported through alloc when available through core.
+#
+# Crates which have no_std compatibility and may optionally require alloc may wish to ensure types are imported from core to ensure disabling alloc does not cause the crate to fail to compile. This lint is also useful for crates migrating to become no_std compatible.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core
+#value none
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[alloc_instead_of_core]
+group = "restriction"
+applicability = "machine-applicable"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
+use-clippy-severity = false
+
+#
+# Lint clippy::allow_attributes
+#
+# Checks for usage of the #[allow] attribute and suggests replacing it with the #[expect]
+#
+# #[expect] attributes suppress the lint emission, but emit a warning, if the expectation is unfulfilled. This can be useful to be notified when the lint is no longer triggered.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes
+#value none
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[allow_attributes]
+group = "restriction"
+applicability = "machine-applicable"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
+use-clippy-severity = false
+
+#
+# Lint clippy::allow_attributes_without_reason
+#
+# Checks for attributes that allow lints without a reason.
+#
+# Justifying each allow helps readers understand the reasoning, and may allow removing allow attributes if their purpose is obsolete.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason
+#value none
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[allow_attributes_without_reason]
+group = "restriction"
+applicability = "unspecified"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
+use-clippy-severity = false
+
+#
+# Lint clippy::almost_complete_range
+#
+# Checks for ranges which almost include the entire range of letters from ‘a’ to ‘z’ or digits from ‘0’ to ‘9’, but don’t because they’re a half open range.
+#
+# This ('a'..'z') is almost certainly a typo meant to include all letters.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range
+#value none
+# Clippy decrease possible value : allow
+#
+# Clippy increase possible value : deny
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[almost_complete_range]
+group = "suspicious"
+applicability = "maybe-incorrect"
+enabled = true
+config-severity = "warn"
+clippy-severity = "warn"
+use-clippy-severity = false
+
+#
+# Lint clippy::almost_swapped
+#
+# Checks for foo = bar; bar = foo sequences.
+#
+# This looks like a failed attempt to swap.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swapped
+#value none
+# Clippy decrease possible values : (allow, warn)
+#
+# Clippy increase possible value none
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[almost_swapped]
+group = "correctness"
+applicability = "maybe-incorrect"
+enabled = true
+config-severity = "deny"
+clippy-severity = "deny"
+use-clippy-severity = false
+
+#
+# Lint clippy::approx_constant
+#
+# Checks for floating point literals that approximate constants which are defined in std::f32::consts or std::f64::consts, respectively, suggesting to use the predefined constant.
+#
+# Usually, the definition in the standard library is more precise than what people come up with. If you find that your definition is actually more precise.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant
+#value none
+# Clippy decrease possible values : (allow, warn)
+#
+# Clippy increase possible value none
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[approx_constant]
+group = "correctness"
+applicability = "unspecified"
+enabled = true
+config-severity = "deny"
+clippy-severity = "deny"
+use-clippy-severity = false
+
+#
+# Lint clippy::arc_with_non_send_sync
+#
+# This lint warns when you use Arc with a type that does not implement Send or Sync.
+#
+# Arc<T> is a thread-safe Rc<T> and guarantees that updates to the reference counter use atomic operations. To send an Arc<T> across thread boundaries and share ownership between multiple threads, T must be both Send and Sync, so either T should be made Send + Sync or a Rc should be used instead of an Arc.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arc_with_non_send_sync
+#value none
+# Clippy decrease possible value : allow
+#
+# Clippy increase possible value : deny
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[arc_with_non_send_sync]
+group = "suspicious"
+applicability = "unspecified"
+enabled = true
+config-severity = "warn"
+clippy-severity = "warn"
+use-clippy-severity = false
+
+#
+# Lint clippy::arithmetic_side_effects
+#
+# Checks any kind of arithmetic operation of any type.
+#
+# For integers, overflow will trigger a panic in debug builds or wrap the result in release mode; division by zero will cause a panic in either mode. As a result, it is desirable to explicitly call checked, wrapping or saturating arithmetic methods.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
+#value none
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[arithmetic_side_effects]
+group = "restriction"
+applicability = "unspecified"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
+use-clippy-severity = false
+
+#
+# Lint clippy::absurd_extreme_comparisons
+#
+# Checks for usage of items through absolute paths, like std::env::current_dir.
+#
+# An expression like min <= x may misleadingly imply that it is possible for x to be less than the minimum. Expressions like max < x are probably mistakes.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
+#value none
+# Clippy decrease possible values : (allow, warn)
+#
+# Clippy increase possible value none
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[absurd_extreme_comparisons]
+group = "correctness"
+applicability = "unspecified"
+enabled = true
+config-severity = "deny"
+clippy-severity = "deny"
+use-clippy-severity = false
+
