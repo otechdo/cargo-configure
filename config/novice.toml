@@ -314,10 +314,35 @@ use-clippy-severity = false
 # Default configuration increase possible value none
 #
 [as_underscore]
-group = "correctness"
+group = "restriction"
 applicability = "unspecified"
 enabled = true
 config-severity = "deny"
 clippy-severity = "deny"
+use-clippy-severity = false
+
+#
+# Lint clippy::assertions_on_result_states
+#
+# Checks for assert!(r.is_ok()) or assert!(r.is_err()) calls.
+#
+# This form of assertion does not show any of the information present in the Result other than which variant it isn’t.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states
+#
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[assertions_on_result_states]
+group = "restriction"
+applicability = "machine-applicable"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
 use-clippy-severity = false
 
