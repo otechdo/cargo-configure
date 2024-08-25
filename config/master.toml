@@ -346,3 +346,28 @@ config-severity = "deny"
 clippy-severity = "allow"
 use-clippy-severity = false
 
+#
+# Lint clippy::as_ptr_cast_mut
+#
+# Checks for the result of a &self-taking as_ptr being cast to a mutable pointer.
+#
+# Since as_ptr takes a &self, the pointer won’t have write permissions unless interior mutability is used, making it unlikely that having it as a mutable pointer is correct.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut
+#
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[as_ptr_cast_mut]
+group = "nursery"
+applicability = "maybe-incorrect"
+enabled = true
+config-severity = "deny"
+clippy-severity = "allow"
+use-clippy-severity = false
+
