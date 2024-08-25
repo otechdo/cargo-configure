@@ -548,3 +548,30 @@ config-severity = "warn"
 clippy-severity = "warn"
 use-clippy-severity = false
 
+#
+# Lint clippy::bad_bit_mask
+#
+# Checks for incompatible bit masks in comparisons.
+#
+# If the bits that the comparison cares about are always set to zero or one by the bit mask, the comparison is constant true or false (depending on mask, compared value, and operators).
+# #
+# # So the code is actively misleading, and the only reason someone would write this intentionally is to win an underhanded Rust contest or create a test-case for this lint.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bad_bit_mask
+#
+# Clippy decrease possible values : (allow, warn)
+#
+# Clippy increase possible value none
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[bad_bit_mask]
+group = "correctness"
+applicability = "unspecified"
+enabled = true
+config-severity = "deny"
+clippy-severity = "deny"
+use-clippy-severity = false
+
