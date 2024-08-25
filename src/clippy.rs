@@ -284,7 +284,7 @@ pub struct ClippyLint<'a> {
     pub use_clippy_severity: bool,
     pub severity: LintSeverity<'a>,
     pub group: LintGroup,
-    pub url: Option<&'static str>,
+    pub issue: Option<&'static str>,
     pub applicability: Applicability,
     pub all_increase_config_default_possible_severity: LintSeverity<'a>,
     pub all_decrease_config_default_possible_severity: LintSeverity<'a>,
@@ -304,7 +304,7 @@ pub const ABSOLUTE_PATH_DESCRIPTION: &str =
 pub const ABSOLUTE_PATH_KNOW_PROBLEM: Option<&'static str> = Some("There are currently a few cases which are not caught by this lint:\nMacro calls. e.g. path::to::macro!()\nDerive macros. e.g. #[derive(path::to::macro)]\nAttribute macros. e.g. #[path::to::macro]");
 #[doc = "The absolute path what it's bad"]
 pub const ABSOLUTE_PATH_WHATS_BAD: &str = "Many codebases have their own style when it comes to importing, but one that is seldom used is using absolute paths everywhere.\n\nThis is generally considered unidiomatic, and you should add a use statement.\n\nThe default maximum segments (2) is pretty strict, you may want to increase this in clippy.toml.\nNote: One exception to this is code from macro expansion - this does not lint such cases, as using absolute paths is the proper way of referencing items in one.";
-#[doc = "The absolute path url to issue"]
+#[doc = "The absolute path uri to issue"]
 pub const ABSOLUTE_PATH_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absolute_paths");
 
 #[doc = "Absolute path lint level for novice"]
@@ -318,7 +318,7 @@ pub const NOVICE_ABSOLUTE_PATH: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Allow,
     group: LintGroup::Restriction,
-    url: ABSOLUTE_PATH_ISSUE,
+    issue: ABSOLUTE_PATH_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
@@ -336,7 +336,7 @@ pub const EXPERT_ABSOLUTE_PATH: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ABSOLUTE_PATH_ISSUE,
+    issue: ABSOLUTE_PATH_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -355,7 +355,7 @@ pub const MASTER_ABSOLUTE_PATH: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: ABSOLUTE_PATH_ISSUE,
+    issue: ABSOLUTE_PATH_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -372,7 +372,7 @@ pub const ALLOC_INSTEAD_OF_CORE_DESCRIPTION: &str =
 pub const ALLOC_INSTEAD_OF_CORE_KNOW_PROBLEM: Option<&'static str> = Some("The lint is only partially aware of the required MSRV for items that were originally in std but moved to core.");
 #[doc = "The clippy alloc instead of core what it's bad"]
 pub const ALLOC_INSTEAD_OF_CORE_WHATS_BAD: &str = "Crates which have no_std compatibility and may optionally require alloc may wish to ensure types are imported from core to ensure disabling alloc does not cause the crate to fail to compile. This lint is also useful for crates migrating to become no_std compatible.";
-#[doc = "The clippy alloc instead of core what it's bad issue url"]
+#[doc = "The clippy alloc instead of core what it's bad uri issue"]
 pub const ALLOC_INSTEAD_OF_CORE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core");
 
 #[doc = "clippy alloc instead of core lint for novice"]
@@ -386,7 +386,7 @@ pub const NOVICE_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ALLOC_INSTEAD_OF_CORE_ISSUE,
+    issue: ALLOC_INSTEAD_OF_CORE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -405,7 +405,7 @@ pub const EXPERT_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ALLOC_INSTEAD_OF_CORE_ISSUE,
+    issue: ALLOC_INSTEAD_OF_CORE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -424,7 +424,7 @@ pub const MASTER_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: ALLOC_INSTEAD_OF_CORE_ISSUE,
+    issue: ALLOC_INSTEAD_OF_CORE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -441,7 +441,7 @@ pub const ALLOW_ATTRIBUTE_DESCRIPTION: &str = "Checks for usage of the #[allow] 
 pub const ALLOW_ATTRIBUTE_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The allow attributes what it's bad"]
 pub const ALLOW_ATTRIBUTE_WHATS_BAD: &str = "#[expect] attributes suppress the lint emission, but emit a warning, if the expectation is unfulfilled. This can be useful to be notified when the lint is no longer triggered.";
-#[doc = "The  allow attributes issue url"]
+#[doc = "The  allow attributes uri issue"]
 pub const ALLOW_ATTRIBUTE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes");
 
 #[doc = "The allow attributes lint for novice"]
@@ -455,7 +455,7 @@ pub const NOVICE_ALLOW_ATTRIBUTE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ALLOW_ATTRIBUTE_ISSUE,
+    issue: ALLOW_ATTRIBUTE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -474,7 +474,7 @@ pub const EXPERT_ALLOW_ATTRIBUTE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ALLOW_ATTRIBUTE_ISSUE,
+    issue: ALLOW_ATTRIBUTE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -493,7 +493,7 @@ pub const MASTER_ALLOW_ATTRIBUTE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: ALLOW_ATTRIBUTE_ISSUE,
+    issue: ALLOW_ATTRIBUTE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -524,7 +524,7 @@ pub const NOVICE_ALLOW_ATTRIBUTE_WITHOUT_REASON: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
+    issue: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -543,7 +543,7 @@ pub const EXPERT_ALLOW_ATTRIBUTE_WITHOUT_REASON: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
+    issue: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -562,7 +562,7 @@ pub const MASTER_ALLOW_ATTRIBUTE_WITHOUT_REASON: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
+    issue: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -592,7 +592,7 @@ pub const NOVICE_ALMOST_COMPLETE_RANGE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Suspicious,
-    url: ALMOST_COMPLETE_RANGE_ISSUE,
+    issue: ALMOST_COMPLETE_RANGE_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -612,7 +612,7 @@ pub const EXPERT_ALMOST_COMPLETE_RANGE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Suspicious,
-    url: ALMOST_COMPLETE_RANGE_ISSUE,
+    issue: ALMOST_COMPLETE_RANGE_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -631,7 +631,7 @@ pub const MASTER_ALMOST_COMPLETE_RANGE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Suspicious,
-    url: ALMOST_COMPLETE_RANGE_ISSUE,
+    issue: ALMOST_COMPLETE_RANGE_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -661,7 +661,7 @@ pub const NOVICE_ALMOST_SWAPPED: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: ALMOST_SWAPPED_ISSUE,
+    issue: ALMOST_SWAPPED_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -680,7 +680,7 @@ pub const EXPERT_ALMOST_SWAPPED: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: ALMOST_SWAPPED_ISSUE,
+    issue: ALMOST_SWAPPED_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -699,7 +699,7 @@ pub const MASTER_ALMOST_SWAPPED: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: ALMOST_SWAPPED_ISSUE,
+    issue: ALMOST_SWAPPED_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -729,7 +729,7 @@ pub const NOVICE_APPROX_CONSTANT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: APPROX_CONSTANT_ISSUE,
+    issue: APPROX_CONSTANT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -748,7 +748,7 @@ pub const EXPERT_APPROX_CONSTANT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: APPROX_CONSTANT_ISSUE,
+    issue: APPROX_CONSTANT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -767,7 +767,7 @@ pub const MASTER_APPROX_CONSTANT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: APPROX_CONSTANT_ISSUE,
+    issue: APPROX_CONSTANT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -797,7 +797,7 @@ pub const NOVICE_ARC_WITH_NO_SEND_SYNC: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Suspicious,
-    url: ARC_WITH_NO_SEND_SYNC_ISSUE,
+    issue: ARC_WITH_NO_SEND_SYNC_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -816,7 +816,7 @@ pub const EXPERT_ARC_WITH_NO_SEND_SYNC: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Suspicious,
-    url: ARC_WITH_NO_SEND_SYNC_ISSUE,
+    issue: ARC_WITH_NO_SEND_SYNC_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -835,7 +835,7 @@ pub const MASTER_ARC_WITH_NO_SEND_SYNC: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: ARC_WITH_NO_SEND_SYNC_ISSUE,
+    issue: ARC_WITH_NO_SEND_SYNC_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -866,7 +866,7 @@ pub const NOVICE_ARITHMETIC_SIDE_EFFECT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ARITHMETIC_SIDE_EFFECT_ISSUE,
+    issue: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -885,7 +885,7 @@ pub const EXPERT_ARITHMETIC_SIDE_EFFECT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ARITHMETIC_SIDE_EFFECT_ISSUE,
+    issue: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -904,7 +904,7 @@ pub const MASTER_ARITHMETIC_SIDE_EFFECT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: ARITHMETIC_SIDE_EFFECT_ISSUE,
+    issue: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -924,7 +924,7 @@ pub const ABSURD_EXTREME_COMPARISON_KNOW_PROBLEM: Option<&'static str> = Some("F
 #[doc = "The absurd extreme comparisons what it's bad"]
 pub const ABSURD_EXTREME_COMPARISON_WHATS_BAD: &str = "An expression like min <= x may misleadingly imply that it is possible for x to be less than the minimum. Expressions like max < x are probably mistakes.";
 
-#[doc = "The absurd extreme comparisons issue url"]
+#[doc = "The absurd extreme comparisons uri issue"]
 pub const ABSURD_EXTREME_COMPARISON_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absurd_extreme_comparisons");
 
 #[doc = "The absurd extreme comparisons for novice"]
@@ -938,7 +938,7 @@ pub const NOVICE_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: ARITHMETIC_SIDE_EFFECT_ISSUE,
+    issue: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -957,7 +957,7 @@ pub const EXPERT_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: ARITHMETIC_SIDE_EFFECT_ISSUE,
+    issue: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -976,7 +976,7 @@ pub const MASTER_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Correctness,
-    url: ARITHMETIC_SIDE_EFFECT_ISSUE,
+    issue: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -992,7 +992,7 @@ pub const AS_CONVERSIONS_DESCRIPTION: &str = "Checks for usage of as conversions
 pub const AS_CONVERSIONS_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The as_conversions what it's bad"]
 pub const AS_CONVERSIONS_WHATS_BAD: &str = "The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.\n#\n# There are cases when it makes sense to use as, so the lint is Allow by default.";
-#[doc = "The as_conversions issue url"]
+#[doc = "The as_conversions uri issue"]
 pub const AS_CONVERSIONS_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions");
 
 #[doc = "The as_conversions for novice"]
@@ -1006,7 +1006,7 @@ pub const NOVICE_AS_CONVERSIONS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: AS_CONVERSIONS_ISSUE,
+    issue: AS_CONVERSIONS_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -1025,7 +1025,7 @@ pub const EXPERT_AS_CONVERSIONS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: AS_CONVERSIONS_ISSUE,
+    issue: AS_CONVERSIONS_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -1044,7 +1044,7 @@ pub const MASTER_AS_CONVERSIONS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: AS_CONVERSIONS_ISSUE,
+    issue: AS_CONVERSIONS_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1063,7 +1063,7 @@ pub const AS_UNDERSCORE_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The as underscore what it's bad"]
 pub const AS_UNDERSCORE_WHATS_BAD: &str = "The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.\n#\n# There are cases when it makes sense to use as, so the lint is Allow by default.";
 
-#[doc = "The as underscore issue url"]
+#[doc = "The as underscore uri issue"]
 pub const AS_UNDERSCORE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore");
 
 #[doc = "The as_conversions for novice"]
@@ -1077,7 +1077,7 @@ pub const NOVICE_AS_UNDERSCORE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: AS_UNDERSCORE_ISSUE,
+    issue: AS_UNDERSCORE_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1096,7 +1096,7 @@ pub const EXPERT_AS_UNDERSCORE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: AS_UNDERSCORE_ISSUE,
+    issue: AS_UNDERSCORE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1115,7 +1115,7 @@ pub const MASTER_AS_UNDERSCORE: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: AS_UNDERSCORE_ISSUE,
+    issue: AS_UNDERSCORE_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1132,7 +1132,7 @@ pub const ASSERTIONS_ON_RESULTS_STATES_DESCRIPTION: &str = "Checks for assert!(r
 pub const ASSERTIONS_ON_RESULTS_STATES_KNOW_PROBLEM: Option<&'static str> = Some("The suggested replacement decreases the readability of code and log output.");
 #[doc = "The assertions on result states what it's bad"]
 pub const ASSERTIONS_ON_RESULTS_STATES_WHATS_BAD: &str = "This form of assertion does not show any of the information present in the Result other than which variant it isn’t.";
-#[doc = "The as underscore issue url"]
+#[doc = "The as underscore uri issue"]
 pub const ASSERTIONS_ON_RESULTS_STATES_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states");
 
 #[doc = "The assertions on result states for novice"]
@@ -1146,7 +1146,7 @@ pub const NOVICE_ASSERTIONS_ON_RESULTS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ASSERTIONS_ON_RESULTS_STATES_ISSUE,
+    issue: ASSERTIONS_ON_RESULTS_STATES_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -1165,7 +1165,7 @@ pub const EXPERT_ASSERTIONS_ON_RESULTS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Restriction,
-    url: ASSERTIONS_ON_RESULTS_STATES_ISSUE,
+    issue: ASSERTIONS_ON_RESULTS_STATES_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -1184,7 +1184,7 @@ pub const MASTER_ASSERTIONS_ON_RESULTS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Restriction,
-    url: ASSERTIONS_ON_RESULTS_STATES_ISSUE,
+    issue: ASSERTIONS_ON_RESULTS_STATES_ISSUE,
     applicability: Applicability::MachineApplicable,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1200,7 +1200,7 @@ pub const AS_PTR_CAST_MUT_DESCRIPTION: &str = "Checks for the result of a &self-
 pub const AS_PTR_CAST_MUT_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The as ptr cast mut what it's bad"]
 pub const AS_PTR_CAST_MUT_WHATS_BAD: &str = "Since as_ptr takes a &self, the pointer won’t have write permissions unless interior mutability is used, making it unlikely that having it as a mutable pointer is correct.";
-#[doc = "The as ptr cast mut issue url"]
+#[doc = "The as ptr cast mut uri issue"]
 pub const AS_PTR_CAST_MUT_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut");
 
 #[doc = "The as ptr cast mut for novice"]
@@ -1214,7 +1214,7 @@ pub const NOVICE_AS_PTR_CAST_MUT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Allow,
     group: LintGroup::Nursery,
-    url: AS_PTR_CAST_MUT_ISSUE,
+    issue: AS_PTR_CAST_MUT_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
@@ -1233,7 +1233,7 @@ pub const EXPERT_AS_PTR_CAST_MUT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Nursery,
-    url: AS_PTR_CAST_MUT_ISSUE,
+    issue: AS_PTR_CAST_MUT_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -1252,7 +1252,7 @@ pub const MASTER_AS_PTR_CAST_MUT: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Nursery,
-    url: AS_PTR_CAST_MUT_ISSUE,
+    issue: AS_PTR_CAST_MUT_ISSUE,
     applicability: Applicability::MaybeIncorrect,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1268,7 +1268,7 @@ pub const ASSERTIONS_ON_CONSTANTS_DESCRIPTION: &str = "Checks for assert!(true) 
 pub const ASSERTIONS_ON_CONSTANTS_PROBLEM: Option<&'static str> = None;
 #[doc = "The assertions on constants what it's bad"]
 pub const ASSERTIONS_ON_CONSTANTS_WHATS_BAD: &str = "Will be optimized out by the compiler or should probably be replaced by a panic!() or unreachable!()";
-#[doc = "The assertions on constants issue url"]
+#[doc = "The assertions on constants uri issue"]
 pub const ASSERTIONS_ON_CONSTANTS_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_constants");
 
 #[doc = "The as ptr cast mut for novice"]
@@ -1282,7 +1282,7 @@ pub const NOVICE_ASSERTIONS_ON_CONSTANTS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
     group: LintGroup::Style,
-    url: ASSERTIONS_ON_CONSTANTS_ISSUE,
+    issue: ASSERTIONS_ON_CONSTANTS_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
@@ -1301,7 +1301,7 @@ pub const EXPERT_ASSERTIONS_ON_CONSTANTS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Style,
-    url: ASSERTIONS_ON_CONSTANTS_ISSUE,
+    issue: ASSERTIONS_ON_CONSTANTS_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1320,7 +1320,7 @@ pub const MASTER_ASSERTIONS_ON_CONSTANTS: ClippyLint = ClippyLint {
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
     group: LintGroup::Style,
-    url: ASSERTIONS_ON_CONSTANTS_ISSUE,
+    issue: ASSERTIONS_ON_CONSTANTS_ISSUE,
     applicability: Applicability::Unspecified,
     all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
@@ -1328,8 +1328,76 @@ pub const MASTER_ASSERTIONS_ON_CONSTANTS: ClippyLint = ClippyLint {
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
 };
 
+#[doc = "The assign op pattern id"]
+pub const ASSIGN_OF_PATTERN_ID: &str = "assign_op_pattern";
+#[doc = "The assign op pattern description"]
+pub const ASSIGN_OP_PATTERN_DESCRIPTION: &str = "Checks for a = a op b or a = b commutative_op a patterns.";
+#[doc = "The assign op pattern know problem"]
+pub const ASSIGN_OP_PATTERN_KNOW_PROBLEM: Option<&'static str> = Some("While forbidden by the spec, OpAssign traits may have implementations that differ from the regular Op impl.");
+#[doc = "The assign op pattern what it's bad"]
+pub const ASSIGN_OP_PATTERN_WHATS_BAD: &str = "These can be written as the shorter a op= b.";
+#[doc = "The assign op pattern uri issue"]
+pub const ASSIGN_OP_PATTERN_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern");
+
+#[doc = "The assign op pattern for novice"]
+pub const NOVICE_ASSIGN_OF_PATTERN: ClippyLint = ClippyLint {
+    id: ASSIGN_OF_PATTERN_ID,
+    description: ASSIGN_OP_PATTERN_DESCRIPTION,
+    whats_bad: ASSIGN_OP_PATTERN_WHATS_BAD,
+    known_problems: ASSIGN_OP_PATTERN_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Style,
+    issue: ASSIGN_OP_PATTERN_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The assign of pattern for expert"]
+pub const EXPERT_ASSIGN_OF_PATTERN: ClippyLint = ClippyLint {
+    id: ASSIGN_OF_PATTERN_ID,
+    description: ASSIGN_OP_PATTERN_DESCRIPTION,
+    whats_bad: ASSIGN_OP_PATTERN_WHATS_BAD,
+    known_problems: ASSIGN_OP_PATTERN_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Style,
+    issue: ASSIGN_OP_PATTERN_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The assign of pattern for master"]
+pub const MASTER_ASSIGN_OF_PATTERN: ClippyLint = ClippyLint {
+    id: ASSIGN_OF_PATTERN_ID,
+    description: ASSIGN_OP_PATTERN_DESCRIPTION,
+    whats_bad: ASSIGN_OP_PATTERN_WHATS_BAD,
+    known_problems: ASSIGN_OP_PATTERN_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Style,
+    issue: ASSIGN_OP_PATTERN_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 15] = [
+pub const NOVICE_LINTS: [ClippyLint; 16] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -1345,10 +1413,11 @@ pub const NOVICE_LINTS: [ClippyLint; 15] = [
     NOVICE_ASSERTIONS_ON_RESULTS,
     NOVICE_AS_PTR_CAST_MUT,
     NOVICE_ASSERTIONS_ON_CONSTANTS,
+    NOVICE_ASSIGN_OF_PATTERN,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 15] = [
+pub const EXPERT_LINTS: [ClippyLint; 16] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -1364,10 +1433,11 @@ pub const EXPERT_LINTS: [ClippyLint; 15] = [
     EXPERT_ASSERTIONS_ON_RESULTS,
     EXPERT_AS_PTR_CAST_MUT,
     EXPERT_ASSERTIONS_ON_CONSTANTS,
+    EXPERT_ASSIGN_OF_PATTERN,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 15] = [
+pub const MASTER_LINTS: [ClippyLint; 16] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -1382,7 +1452,8 @@ pub const MASTER_LINTS: [ClippyLint; 15] = [
     MASTER_AS_UNDERSCORE,
     MASTER_ASSERTIONS_ON_RESULTS,
     MASTER_AS_PTR_CAST_MUT,
-    MASTER_ASSERTIONS_ON_CONSTANTS
+    MASTER_ASSERTIONS_ON_CONSTANTS,
+    MASTER_ASSIGN_OF_PATTERN,
 ];
 
 #[doc = "Novice configuration filename"]
@@ -1426,8 +1497,8 @@ pub fn generate_config_file(filename: &str, lints: &[ClippyLint]) -> Result<(), 
             &lint.description,
             &lint.whats_bad.replace("\n", "\n# ")
         )?;
-        if let Some(uri) = lint.url {
-            writeln!(file, "#\n# Issue url : {}\n#", uri)?;
+        if let Some(uri) = lint.issue {
+            writeln!(file, "#\n# Issue issue : {}\n#", uri)?;
         }
         writeln!(
             file,
