@@ -1464,8 +1464,211 @@ pub const MASTER_ASSIGNING_CLONE: ClippyLint = ClippyLint {
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
 };
 
+#[doc = "The async yields async id"]
+pub const ASYNC_YIELDS_ASYNC_ID: &str = "async_yields_async";
+#[doc = "The async yields async description"]
+pub const ASYNC_YIELDS_ASYNC_DESCRIPTION: &str = "Checks for async blocks that yield values of types that can themselves be awaited.";
+#[doc = "The async yields async know problem"]
+pub const ASYNC_YIELDS_ASYNC_KNOW_PROBLEM: Option<&'static str> = Some("While forbidden by the spec, OpAssign traits may have implementations that differ from the regular Op impl.");
+#[doc = "The async yields async what it's bad"]
+pub const ASYNC_YIELDS_ASYNC_WHATS_BAD: &str = "An await is likely missing.";
+#[doc = "The async yields async uri issue"]
+pub const ASYNC_YIELDS_ASYNC_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+async_yields_async");
+
+#[doc = "The async yields async for novice"]
+pub const NOVICE_ASYNC_YIELDS_ASYNC: ClippyLint = ClippyLint {
+    id: ASYNC_YIELDS_ASYNC_ID,
+    description: ASYNC_YIELDS_ASYNC_DESCRIPTION,
+    whats_bad: ASYNC_YIELDS_ASYNC_WHATS_BAD,
+    known_problems: ASYNC_YIELDS_ASYNC_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Deny,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Correctness,
+    issue: ASYNC_YIELDS_ASYNC_ISSUE,
+    applicability: Applicability::MaybeIncorrect,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
+#[doc = "The async yields async for expert"]
+pub const EXPERT_ASYNC_YIELDS_ASYNC: ClippyLint = ClippyLint {
+    id: ASYNC_YIELDS_ASYNC_ID,
+    description: ASYNC_YIELDS_ASYNC_DESCRIPTION,
+    whats_bad: ASYNC_YIELDS_ASYNC_WHATS_BAD,
+    known_problems: ASYNC_YIELDS_ASYNC_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Deny,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Correctness,
+    issue: ASYNC_YIELDS_ASYNC_ISSUE,
+    applicability: Applicability::MaybeIncorrect,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
+#[doc = "The async yields async for master"]
+pub const MASTER_ASYNC_YIELDS_ASYNC: ClippyLint = ClippyLint {
+    id: ASYNC_YIELDS_ASYNC_ID,
+    description: ASYNC_YIELDS_ASYNC_DESCRIPTION,
+    whats_bad: ASYNC_YIELDS_ASYNC_WHATS_BAD,
+    known_problems: ASYNC_YIELDS_ASYNC_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Deny,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Correctness,
+    issue: ASYNC_YIELDS_ASYNC_ISSUE,
+    applicability: Applicability::MaybeIncorrect,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
+#[doc = "The await holding invalid type id"]
+pub const AWAIT_HOLDING_INVALID_TYPE_ID: &str = "await_holding_invalid_type";
+#[doc = "The await holding invalid type description"]
+pub const AWAIT_HOLDING_INVALID_DESCRIPTION: &str = "Allows users to configure types which should not be held across await suspension points.";
+#[doc = "The await holding invalid type problem"]
+pub const AWAIT_HOLDING_INVALID_KNOW_PROBLEM: Option<&'static str> = Some("While forbidden by the spec, OpAssign traits may have implementations that differ from the regular Op impl.");
+#[doc = "The await holding invalid type what it's bad"]
+pub const AWAIT_HOLDING_INVALID_WHATS_BAD: &str = "There are some types which are perfectly safe to use concurrently from a memory access perspective, but that will cause bugs at runtime if they are held in such a way.";
+#[doc = "The await holding invalid type uri issue"]
+pub const AWAIT_HOLDING_INVALID_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_invalid_type");
+#[doc = "The await holding invalid for novice"]
+pub const NOVICE_AWAIT_HOLDING_INVALID: ClippyLint = ClippyLint {
+    id: AWAIT_HOLDING_INVALID_TYPE_ID,
+    description: AWAIT_HOLDING_INVALID_DESCRIPTION,
+    whats_bad: AWAIT_HOLDING_INVALID_WHATS_BAD,
+    known_problems: AWAIT_HOLDING_INVALID_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Suspicious,
+    issue: AWAIT_HOLDING_INVALID_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The await holding invalid for expert"]
+pub const EXPERT_AWAIT_HOLDING_INVALID: ClippyLint = ClippyLint {
+    id: AWAIT_HOLDING_INVALID_TYPE_ID,
+    description: AWAIT_HOLDING_INVALID_DESCRIPTION,
+    whats_bad: AWAIT_HOLDING_INVALID_WHATS_BAD,
+    known_problems: AWAIT_HOLDING_INVALID_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Suspicious,
+    issue: AWAIT_HOLDING_INVALID_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The await holding invalid for master"]
+pub const MASTER_AWAIT_HOLDING_INVALID: ClippyLint = ClippyLint {
+    id: AWAIT_HOLDING_INVALID_TYPE_ID,
+    description: AWAIT_HOLDING_INVALID_DESCRIPTION,
+    whats_bad: AWAIT_HOLDING_INVALID_WHATS_BAD,
+    known_problems: AWAIT_HOLDING_INVALID_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Suspicious,
+    issue: AWAIT_HOLDING_INVALID_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The await holding lock id"]
+pub const AWAIT_HOLDING_LOCK_ID: &str = "await_holding_lock";
+#[doc = "The await holding lock description"]
+pub const AWAIT_HOLDING_LOCK_DESCRIPTION: &str = "Checks for calls to await while holding a non-async-aware MutexGuard.";
+#[doc = "The await holding lock know problem"]
+pub const AWAIT_HOLDING_LOCK_KNOW_PROBLEM: Option<&'static str> = Some("Will report false positive for explicitly dropped guards (#6446). A workaround for this is to wrap the .lock() call in a block instead of explicitly dropping the guard.");
+#[doc = "The await holding lock what it's bad"]
+pub const AWAIT_HOLDING_LOCK_WHATS_BAD: &str = "The Mutex types found in [std::sync][https://doc.rust-lang.org/stable/std/sync/] and parking_lot are not designed to operate in an async context across await points.\n#\n# There are two potential solutions. One is to use an async-aware Mutex type. Many asynchronous foundation crates provide such a Mutex type. The other solution is to ensure the mutex is unlocked before calling await, either by introducing a scope or an explicit call to Drop::drop.";
+#[doc = "The await holding lock uri issue"]
+pub const AWAIT_HOLDING_LOCK_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_lock");
+
+#[doc = "The await holding lock for novice"]
+pub const NOVICE_AWAIT_HOLDING_LOCK: ClippyLint = ClippyLint {
+    id: AWAIT_HOLDING_LOCK_ID,
+    description: AWAIT_HOLDING_LOCK_DESCRIPTION,
+    whats_bad: AWAIT_HOLDING_LOCK_WHATS_BAD,
+    known_problems: ASSIGNING_CLONE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Suspicious,
+    issue: AWAIT_HOLDING_LOCK_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The await holding lock for expert"]
+pub const EXPERT_AWAIT_HOLDING_LOCK: ClippyLint = ClippyLint {
+    id: AWAIT_HOLDING_LOCK_ID,
+    description: AWAIT_HOLDING_LOCK_DESCRIPTION,
+    whats_bad: AWAIT_HOLDING_LOCK_WHATS_BAD,
+    known_problems: ASSIGNING_CLONE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Suspicious,
+    issue: AWAIT_HOLDING_LOCK_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The await holding lock for master"]
+pub const MASTER_AWAIT_HOLDING_LOCK: ClippyLint = ClippyLint {
+    id: AWAIT_HOLDING_LOCK_ID,
+    description: AWAIT_HOLDING_LOCK_DESCRIPTION,
+    whats_bad: AWAIT_HOLDING_LOCK_WHATS_BAD,
+    known_problems: ASSIGNING_CLONE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Suspicious,
+    issue: AWAIT_HOLDING_LOCK_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 17] = [
+pub const NOVICE_LINTS: [ClippyLint; 20] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -1483,10 +1686,13 @@ pub const NOVICE_LINTS: [ClippyLint; 17] = [
     NOVICE_ASSERTIONS_ON_CONSTANTS,
     NOVICE_ASSIGN_OF_PATTERN,
     NOVICE_ASSIGNING_CLONE,
+    NOVICE_ASYNC_YIELDS_ASYNC,
+    NOVICE_AWAIT_HOLDING_INVALID,
+    NOVICE_AWAIT_HOLDING_LOCK,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 17] = [
+pub const EXPERT_LINTS: [ClippyLint; 20] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -1504,10 +1710,13 @@ pub const EXPERT_LINTS: [ClippyLint; 17] = [
     EXPERT_ASSERTIONS_ON_CONSTANTS,
     EXPERT_ASSIGN_OF_PATTERN,
     EXPERT_ASSIGNING_CLONE,
+    EXPERT_ASYNC_YIELDS_ASYNC,
+    EXPERT_AWAIT_HOLDING_INVALID,
+    EXPERT_AWAIT_HOLDING_LOCK,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 17] = [
+pub const MASTER_LINTS: [ClippyLint; 20] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -1525,6 +1734,9 @@ pub const MASTER_LINTS: [ClippyLint; 17] = [
     MASTER_ASSERTIONS_ON_CONSTANTS,
     MASTER_ASSIGN_OF_PATTERN,
     MASTER_ASSIGNING_CLONE,
+    MASTER_ASYNC_YIELDS_ASYNC,
+    MASTER_AWAIT_HOLDING_INVALID,
+    MASTER_AWAIT_HOLDING_LOCK,
 ];
 
 #[doc = "Novice configuration filename"]

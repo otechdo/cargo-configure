@@ -446,3 +446,80 @@ config-severity = "warn"
 clippy-severity = "allow"
 use-clippy-severity = false
 
+#
+# Lint clippy::async_yields_async
+#
+# Checks for async blocks that yield values of types that can themselves be awaited.
+#
+# An await is likely missing.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+async_yields_async
+#
+# Clippy decrease possible values : (allow, warn)
+#
+# Clippy increase possible value none
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[async_yields_async]
+group = "correctness"
+applicability = "maybe-incorrect"
+enabled = true
+config-severity = "warn"
+clippy-severity = "deny"
+use-clippy-severity = false
+
+#
+# Lint clippy::await_holding_invalid_type
+#
+# Allows users to configure types which should not be held across await suspension points.
+#
+# There are some types which are perfectly safe to use concurrently from a memory access perspective, but that will cause bugs at runtime if they are held in such a way.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_invalid_type
+#
+# Clippy decrease possible value : allow
+#
+# Clippy increase possible value : deny
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[await_holding_invalid_type]
+group = "suspicious"
+applicability = "unspecified"
+enabled = true
+config-severity = "deny"
+clippy-severity = "warn"
+use-clippy-severity = false
+
+#
+# Lint clippy::await_holding_lock
+#
+# Checks for calls to await while holding a non-async-aware MutexGuard.
+#
+# The Mutex types found in [std::sync][https://doc.rust-lang.org/stable/std/sync/] and parking_lot are not designed to operate in an async context across await points.
+# #
+# # There are two potential solutions. One is to use an async-aware Mutex type. Many asynchronous foundation crates provide such a Mutex type. The other solution is to ensure the mutex is unlocked before calling await, either by introducing a scope or an explicit call to Drop::drop.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_lock
+#
+# Clippy decrease possible value : allow
+#
+# Clippy increase possible value : deny
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[await_holding_lock]
+group = "suspicious"
+applicability = "unspecified"
+enabled = true
+config-severity = "deny"
+clippy-severity = "warn"
+use-clippy-severity = false
+
