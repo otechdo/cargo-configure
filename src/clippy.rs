@@ -1396,8 +1396,76 @@ pub const MASTER_ASSIGN_OF_PATTERN: ClippyLint = ClippyLint {
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
 };
 
+#[doc = "The assigning clones id"]
+pub const ASSIGNING_CLONE_ID: &str = "assigning_clones";
+#[doc = "The assigning clones description"]
+pub const ASSIGNING_CLONE_DESCRIPTION: &str = "Checks for code like foo = bar.clone();";
+#[doc = "The assigning clones know problem"]
+pub const ASSIGNING_CLONE_KNOW_PROBLEM: Option<&'static str> = Some("While forbidden by the spec, OpAssign traits may have implementations that differ from the regular Op impl.");
+#[doc = "The assigning clones what it's bad"]
+pub const ASSIGNING_CLONE_WHATS_BAD: &str = "Custom Clone::clone_from() or ToOwned::clone_into implementations allow the objects to share resources and therefore avoid allocations.";
+#[doc = "The assigning clones uri issue"]
+pub const ASSIGNING_CLONE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assigning_clones");
+
+#[doc = "The assigning clones for novice"]
+pub const NOVICE_ASSIGNING_CLONE: ClippyLint = ClippyLint {
+    id: ASSIGNING_CLONE_ID,
+    description: ASSIGNING_CLONE_DESCRIPTION,
+    whats_bad: ASSIGNING_CLONE_WHATS_BAD,
+    known_problems: ASSIGNING_CLONE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Allow,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Pedantic,
+    issue: ASSIGNING_CLONE_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
+};
+
+#[doc = "The assigning clones for expert"]
+pub const EXPERT_ASSIGNING_CLONE: ClippyLint = ClippyLint {
+    id: ASSIGN_OF_PATTERN_ID,
+    description: ASSIGNING_CLONE_DESCRIPTION,
+    whats_bad: ASSIGNING_CLONE_WHATS_BAD,
+    known_problems: ASSIGNING_CLONE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Allow,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Pedantic,
+    issue: ASSIGNING_CLONE_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
+};
+
+#[doc = "The assigning clones for master"]
+pub const MASTER_ASSIGNING_CLONE: ClippyLint = ClippyLint {
+    id: ASSIGNING_CLONE_ID,
+    description: ASSIGNING_CLONE_DESCRIPTION,
+    whats_bad: ASSIGNING_CLONE_WHATS_BAD,
+    known_problems: ASSIGNING_CLONE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Allow,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Pedantic,
+    issue: ASSIGNING_CLONE_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
+};
+
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 16] = [
+pub const NOVICE_LINTS: [ClippyLint; 17] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -1414,10 +1482,11 @@ pub const NOVICE_LINTS: [ClippyLint; 16] = [
     NOVICE_AS_PTR_CAST_MUT,
     NOVICE_ASSERTIONS_ON_CONSTANTS,
     NOVICE_ASSIGN_OF_PATTERN,
+    NOVICE_ASSIGNING_CLONE,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 16] = [
+pub const EXPERT_LINTS: [ClippyLint; 17] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -1434,10 +1503,11 @@ pub const EXPERT_LINTS: [ClippyLint; 16] = [
     EXPERT_AS_PTR_CAST_MUT,
     EXPERT_ASSERTIONS_ON_CONSTANTS,
     EXPERT_ASSIGN_OF_PATTERN,
+    EXPERT_ASSIGNING_CLONE,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 16] = [
+pub const MASTER_LINTS: [ClippyLint; 17] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -1454,6 +1524,7 @@ pub const MASTER_LINTS: [ClippyLint; 16] = [
     MASTER_AS_PTR_CAST_MUT,
     MASTER_ASSERTIONS_ON_CONSTANTS,
     MASTER_ASSIGN_OF_PATTERN,
+    MASTER_ASSIGNING_CLONE,
 ];
 
 #[doc = "Novice configuration filename"]
@@ -1498,7 +1569,7 @@ pub fn generate_config_file(filename: &str, lints: &[ClippyLint]) -> Result<(), 
             &lint.whats_bad.replace("\n", "\n# ")
         )?;
         if let Some(uri) = lint.issue {
-            writeln!(file, "#\n# Issue issue : {}\n#", uri)?;
+            writeln!(file, "#\n# Issue : {}\n#", uri)?;
         }
         writeln!(
             file,

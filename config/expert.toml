@@ -10,7 +10,7 @@
 # The default maximum segments (2) is pretty strict, you may want to increase this in clippy.toml.
 # Note: One exception to this is code from macro expansion - this does not lint such cases, as using absolute paths is the proper way of referencing items in one.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absolute_paths
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absolute_paths
 #
 # Clippy decrease possible value none
 #
@@ -35,7 +35,7 @@ use-clippy-severity = false
 #
 # Crates which have no_std compatibility and may optionally require alloc may wish to ensure types are imported from core to ensure disabling alloc does not cause the crate to fail to compile. This lint is also useful for crates migrating to become no_std compatible.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core
 #
 # Clippy decrease possible value none
 #
@@ -60,7 +60,7 @@ use-clippy-severity = false
 #
 # #[expect] attributes suppress the lint emission, but emit a warning, if the expectation is unfulfilled. This can be useful to be notified when the lint is no longer triggered.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes
 #
 # Clippy decrease possible value none
 #
@@ -85,7 +85,7 @@ use-clippy-severity = false
 #
 # Justifying each allow helps readers understand the reasoning, and may allow removing allow attributes if their purpose is obsolete.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason
 #
 # Clippy decrease possible value none
 #
@@ -110,7 +110,7 @@ use-clippy-severity = false
 #
 # This ('a'..'z') is almost certainly a typo meant to include all letters.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range
 #
 # Clippy decrease possible value : allow
 #
@@ -135,7 +135,7 @@ use-clippy-severity = false
 #
 # This looks like a failed attempt to swap.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swapped
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swapped
 #
 # Clippy decrease possible values : (allow, warn)
 #
@@ -160,7 +160,7 @@ use-clippy-severity = false
 #
 # Usually, the definition in the standard library is more precise than what people come up with. If you find that your definition is actually more precise.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant
 #
 # Clippy decrease possible values : (allow, warn)
 #
@@ -185,7 +185,7 @@ use-clippy-severity = false
 #
 # Arc<T> is a thread-safe Rc<T> and guarantees that updates to the reference counter use atomic operations. To send an Arc<T> across thread boundaries and share ownership between multiple threads, T must be both Send and Sync, so either T should be made Send + Sync or a Rc should be used instead of an Arc.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arc_with_non_send_sync
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arc_with_non_send_sync
 #
 # Clippy decrease possible value : allow
 #
@@ -210,7 +210,7 @@ use-clippy-severity = false
 #
 # For integers, overflow will trigger a panic in debug builds or wrap the result in release mode; division by zero will cause a panic in either mode. As a result, it is desirable to explicitly call checked, wrapping or saturating arithmetic methods.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
 #
 # Clippy decrease possible value none
 #
@@ -235,7 +235,7 @@ use-clippy-severity = false
 #
 # An expression like min <= x may misleadingly imply that it is possible for x to be less than the minimum. Expressions like max < x are probably mistakes.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
 #
 # Clippy decrease possible values : (allow, warn)
 #
@@ -269,7 +269,7 @@ use-clippy-severity = false
 # #
 # # There are cases when it makes sense to use as, so the lint is Allow by default.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions
 #
 # Clippy decrease possible values : (allow, warn)
 #
@@ -303,7 +303,7 @@ use-clippy-severity = false
 # #
 # # There are cases when it makes sense to use as, so the lint is Allow by default.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore
 #
 # Clippy decrease possible values : (allow, warn)
 #
@@ -328,7 +328,7 @@ use-clippy-severity = false
 #
 # This form of assertion does not show any of the information present in the Result other than which variant it isn’t.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states
 #
 # Clippy decrease possible value none
 #
@@ -353,7 +353,7 @@ use-clippy-severity = false
 #
 # Since as_ptr takes a &self, the pointer won’t have write permissions unless interior mutability is used, making it unlikely that having it as a mutable pointer is correct.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut
 #
 # Clippy decrease possible value none
 #
@@ -378,7 +378,7 @@ use-clippy-severity = false
 #
 # Will be optimized out by the compiler or should probably be replaced by a panic!() or unreachable!()
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_constants
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_constants
 #
 # Clippy decrease possible value : allow
 #
@@ -403,7 +403,7 @@ use-clippy-severity = false
 #
 # These can be written as the shorter a op= b.
 #
-# Issue issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern
 #
 # Clippy decrease possible value : allow
 #
@@ -419,5 +419,30 @@ applicability = "machine-applicable"
 enabled = true
 config-severity = "warn"
 clippy-severity = "warn"
+use-clippy-severity = false
+
+#
+# Lint clippy::assign_op_pattern
+#
+# Checks for code like foo = bar.clone();
+#
+# Custom Clone::clone_from() or ToOwned::clone_into implementations allow the objects to share resources and therefore avoid allocations.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assigning_clones
+#
+# Clippy decrease possible value none
+#
+# Clippy increase possible values : (warn, deny)
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[assign_op_pattern]
+group = "pedantic"
+applicability = "unspecified"
+enabled = true
+config-severity = "warn"
+clippy-severity = "allow"
 use-clippy-severity = false
 
