@@ -1871,8 +1871,76 @@ pub const MASTER_BIG_ENDIAN_BYTES: ClippyLint = ClippyLint {
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
 };
 
+#[doc = "The bind instead of map id"]
+pub const BIG_INSTEAD_OF_MAP_ID: &str = "bind_instead_of_map";
+#[doc = "The bind instead of map description"]
+pub const BIG_INSTEAD_OF_MAP_DESCRIPTION: &str = "Checks for usage of _.and_then(|x| Some(y)), _.and_then(|x| Ok(y)) or _.or_else(|x| Err(y)).";
+#[doc = "The bind instead of map know problem"]
+pub const BIG_INSTEAD_OF_MAP_KNOW_PROBLEM: Option<&'static str> = None;
+#[doc = "The bind instead of map what it's bad"]
+pub const BIG_INSTEAD_OF_MAP_WHATS_BAD: &str = "This can be written more concisely as _.map(|x| y) or _.map_err(|x| y).";
+#[doc = "The bind instead of map uri issue"]
+pub const BIG_INSTEAD_OF_MAP_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bind_instead_of_map");
+
+#[doc = "The bind instead of map for novice"]
+pub const NOVICE_BIG_INSTEAD_OF_MAP: ClippyLint = ClippyLint {
+    id: BIG_INSTEAD_OF_MAP_ID,
+    description: BIG_INSTEAD_OF_MAP_DESCRIPTION,
+    whats_bad: BIG_INSTEAD_OF_MAP_WHATS_BAD,
+    known_problems: BIG_INSTEAD_OF_MAP_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Complexity,
+    issue: BIG_INSTEAD_OF_MAP_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The bind instead of map for expert"]
+pub const EXPERT_BIG_INSTEAD_OF_MAP: ClippyLint = ClippyLint {
+    id: BIG_INSTEAD_OF_MAP_ID,
+    description: BIG_INSTEAD_OF_MAP_DESCRIPTION,
+    whats_bad: BIG_INSTEAD_OF_MAP_WHATS_BAD,
+    known_problems: BIG_INSTEAD_OF_MAP_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Complexity,
+    issue: BIG_INSTEAD_OF_MAP_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
+#[doc = "The bind instead of map for master"]
+pub const MASTER_BIG_INSTEAD_OF_MAP: ClippyLint = ClippyLint {
+    id: BIG_INSTEAD_OF_MAP_ID,
+    description: BIG_INSTEAD_OF_MAP_DESCRIPTION,
+    whats_bad: BIG_INSTEAD_OF_MAP_WHATS_BAD,
+    known_problems: BIG_INSTEAD_OF_MAP_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Warn,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Complexity,
+    issue: BIG_INSTEAD_OF_MAP_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+};
+
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 23] = [
+pub const NOVICE_LINTS: [ClippyLint; 24] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -1896,10 +1964,11 @@ pub const NOVICE_LINTS: [ClippyLint; 23] = [
     NOVICE_AWAIT_HOLDING_REFCELL_REF,
     NOVICE_BAD_BIT_MASK,
     NOVICE_BIG_ENDIAN_BYTES,
+    NOVICE_BIG_INSTEAD_OF_MAP,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 23] = [
+pub const EXPERT_LINTS: [ClippyLint; 24] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -1923,10 +1992,11 @@ pub const EXPERT_LINTS: [ClippyLint; 23] = [
     EXPERT_AWAIT_HOLDING_REFCELL_REF,
     EXPERT_BAD_BIT_MASK,
     EXPERT_BIG_ENDIAN_BYTES,
+    EXPERT_BIG_INSTEAD_OF_MAP,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 23] = [
+pub const MASTER_LINTS: [ClippyLint; 24] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -1950,6 +2020,7 @@ pub const MASTER_LINTS: [ClippyLint; 23] = [
     MASTER_AWAIT_HOLDING_REFCELL_REF,
     MASTER_BAD_BIT_MASK,
     MASTER_BIG_ENDIAN_BYTES,
+    MASTER_BIG_INSTEAD_OF_MAP,
 ];
 
 #[doc = "Novice configuration filename"]
