@@ -7,7 +7,6 @@ pub enum ClippyLevel {
     Novice,
     Expert,
     Master,
-    Legendary,
 }
 
 #[doc = "All clippy supported lints"]
@@ -30,7 +29,6 @@ impl Display for ClippyLevel {
             ClippyLevel::Novice => write!(f, "novice"),
             ClippyLevel::Expert => write!(f, "expert"),
             ClippyLevel::Master => write!(f, "master"),
-            ClippyLevel::Legendary => write!(f, "legendary"),
         }
     }
 }
@@ -67,61 +65,51 @@ impl<'a> Display for LintSeverity<'a> {
                         ClippyLevel::Novice => write!(f, "\n# Why {inner} for {level} ?\n#\n# 1) Learning Curve:\n#\n# For newcomers to Rust and Clippy, understanding the nuances of relative paths and module systems can be challenging.\n# Enforcing strict rules about absolute paths at the Novice level might create unnecessary friction and frustration for beginners.\n# \n# 2) Simplicity:\n#\n# In some simple projects or learning exercises, using absolute paths might be the most straightforward way to reference files or modules.\n# Forcing relative paths in these cases could add complexity without significant benefit.\n#\n# 3) Focus on Fundamentals:\n#\n# At the Novice level, the priority is likely to be on helping users grasp core Rust concepts and avoid common errors.\n#\n# The AbsolutePaths lint, while valuable for code maintainability, might be considered a secondary concern at this stage.\n#\n# 4) Gradual Introduction of Best Practices:\n#\n# Clippy often adopts a progressive approach, introducing more advanced and nuanced lints as the user's proficiency increases.\n#\n# By setting AbsolutePaths to Allow for Novice, Clippy encourages users to focus on the basics first and gradually adopt best practices as they gain experience.\n#"),
                         ClippyLevel::Expert => write!(f, "\n# Why {inner} for {level} ?\n#\n# 1) Contextual Exceptions:\n#\n# There might be specific situations where using absolute paths is justified or even necessary, even for experienced Rust developers. For instance:\n#\n# Test Suites: In some testing frameworks, it might be more convenient or reliable to use absolute paths to reference test data or configuration files.\n# Legacy Code: When working with existing codebases, it might be impractical or time-consuming to refactor all absolute paths to relative ones immediately.\n#\n# Allowing them temporarily at the Expert level can facilitate incremental improvements.\n#\n# Specific Project Requirements: Certain project structures or build systems might benefit from the use of absolute paths in specific cases.\n#\n# 2) Developer Choice:\n#\n# The Expert level might be designed to give experienced developers more control over their code and allow them to make informed decisions about when to deviate from strict linting rules.\n#\n# 3) Lint Maturity:\n#\n# Some lints, including AbsolutePaths, might still be under development or refinement.\n#\n# Setting them to Allow at the Expert level can help gather feedback from experienced users and identify potential false positives or edge cases.\n#\n# 4) Balancing Strictness and Productivity:\n#\n# While encouraging best practices is important, overly strict linting rules can sometimes hinder productivity or lead to unnecessary code churn.\n#\n# Allowing some flexibility at the Expert level can strike a balance between code quality and developer efficiency.\n#"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AbsurdExtremeComparison => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllocInsteadOfCore => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllowAttribute => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllowAttributeWithoutReason => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AlmostCompleteRange => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AlmostSwapped => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ApproxConstant => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ArcWithNoSendSync => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ArithmeticsSideEffects => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                 },
                 LintSeverity::Warn => match choose {
@@ -129,61 +117,51 @@ impl<'a> Display for LintSeverity<'a> {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "\n# Why {inner} for {level} ?\n#\n# Encouraging Best Practices: By setting the lint to Warn, Clippy nudges expert users towards using relative paths whenever possible, promoting code portability and maintainability. The warning serves as a gentle reminder to consider the potential drawbacks of absolute paths.\n#\n# Flexibility with Justification: The Warn level allows expert developers to consciously choose to use absolute paths if they have a valid reason. It encourages them to think critically about their code and justify their decisions, fostering a deeper understanding of the trade-offs involved.\n#\n# Reducing Noise: Compared to the Deny level, which would prevent compilation if absolute paths are used, the Warn level is less disruptive. It allows experts to focus on other critical lints and address the AbsolutePaths warnings at their own pace, without blocking their workflow.\n#\n# Learning Opportunity: Even experienced developers can benefit from reminders about best practices. The Warn level provides an opportunity for experts to revisit their understanding of relative paths and module systems, potentially leading to improved code quality in the long run.\n#\n# Adapting to Project Needs: Different projects might have varying requirements and constraints. The Warn level offers flexibility to adapt the linting rules to the specific context of the project, allowing experts to make informed decisions based on their experience and knowledge.\n#"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AbsurdExtremeComparison => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllocInsteadOfCore => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllowAttribute => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllowAttributeWithoutReason => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AlmostCompleteRange => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AlmostSwapped => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ApproxConstant => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ArcWithNoSendSync => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ArithmeticsSideEffects => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                 },
                 LintSeverity::Deny => match choose {
@@ -191,61 +169,51 @@ impl<'a> Display for LintSeverity<'a> {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "\n# Reasons for {inner} at {level} ?\n#\n# Unyielding Commitment to Best Practices:\n#\n# The Legendary level embodies an unwavering commitment to adhering to best practices.\n#\n# Absolute paths are generally considered detrimental to code portability and maintainability, hence their outright prohibition at this level.\n#\n# Zero Tolerance for Suboptimal Code:\n#\n#  At the Legendary level, there's no room for compromises or exceptions when it comes to code quality.\n#\n#  Even seemingly minor issues like the use of absolute paths are treated with utmost seriousness to prevent potential problems down the line.\n#\n# Setting an Example:\n#\n# The Legendary level sets a high bar for Rust code quality and serves as an example for other developers to follow.\n#\n#  By strictly enforcing best practices, it encourages the community to adopt similar standards and write code that is consistently excellent.\n#\n# Facilitating Automation:\n#\n# Strict linting rules at the Legendary level can facilitate automated code reviews and continuous integration processes.\n#\n# By preventing the use of absolute paths altogether, it reduces the need for manual intervention and ensures that code adheres to the highest standards from the outset.\n#\n# Long-Term Benefits:\n#\n# While enforcing strict rules might seem inconvenient in the short term, it pays off in the long run by producing code that is easier to maintain, adapt, and share across different environments.\n#\n# The Legendary level prioritizes these long-term benefits over short-term convenience.\n#"),
                     },
                     Lint::AbsurdExtremeComparison => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllocInsteadOfCore => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllowAttribute => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AllowAttributeWithoutReason => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AlmostCompleteRange => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::AlmostSwapped => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ApproxConstant => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ArcWithNoSendSync => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                     Lint::ArithmeticsSideEffects => match level {
                         ClippyLevel::Novice => write!(f, "value none"),
                         ClippyLevel::Expert => write!(f, "value none"),
                         ClippyLevel::Master => write!(f, "value none"),
-                        ClippyLevel::Legendary => write!(f, "value none"),
                     },
                 },
                 _ => write!(f, ""),
@@ -315,7 +283,6 @@ pub struct ClippyLint<'a> {
     pub default_clippy_severity: LintSeverity<'a>,
     pub use_clippy_severity: bool,
     pub severity: LintSeverity<'a>,
-    pub why_default_severity: LintSeverity<'a>,
     pub group: LintGroup,
     pub url: Option<&'static str>,
     pub applicability: Applicability,
@@ -350,7 +317,6 @@ pub const NOVICE_ABSOLUTE_PATH: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Allow,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Allow, &Lint::AbsolutePaths, &ClippyLevel::Novice),
     group: LintGroup::Restriction,
     url: ABSOLUTE_PATH_ISSUE,
     applicability: Applicability::Unspecified,
@@ -369,7 +335,6 @@ pub const EXPERT_ABSOLUTE_PATH: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AbsolutePaths, &ClippyLevel::Expert),
     group: LintGroup::Restriction,
     url: ABSOLUTE_PATH_ISSUE,
     applicability: Applicability::Unspecified,
@@ -389,7 +354,6 @@ pub const MASTER_ABSOLUTE_PATH: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AbsolutePaths, &ClippyLevel::Master),
     group: LintGroup::Restriction,
     url: ABSOLUTE_PATH_ISSUE,
     applicability: Applicability::Unspecified,
@@ -421,7 +385,6 @@ pub const NOVICE_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllocInsteadOfCore, &ClippyLevel::Novice),
     group: LintGroup::Restriction,
     url: ALLOC_INSTEAD_OF_CORE_ISSUE,
     applicability: Applicability::MachineApplicable,
@@ -441,7 +404,6 @@ pub const EXPERT_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllocInsteadOfCore, &ClippyLevel::Expert),
     group: LintGroup::Restriction,
     url: ALLOC_INSTEAD_OF_CORE_ISSUE,
     applicability: Applicability::MachineApplicable,
@@ -461,7 +423,6 @@ pub const MASTER_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AllocInsteadOfCore, &ClippyLevel::Master),
     group: LintGroup::Restriction,
     url: ALLOC_INSTEAD_OF_CORE_ISSUE,
     applicability: Applicability::MachineApplicable,
@@ -493,7 +454,6 @@ pub const NOVICE_ALLOW_ATTRIBUTE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllowAttribute, &ClippyLevel::Novice),
     group: LintGroup::Restriction,
     url: ALLOW_ATTRIBUTE_ISSUE,
     applicability: Applicability::MachineApplicable,
@@ -513,7 +473,6 @@ pub const EXPERT_ALLOW_ATTRIBUTE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllowAttribute, &ClippyLevel::Expert),
     group: LintGroup::Restriction,
     url: ALLOW_ATTRIBUTE_ISSUE,
     applicability: Applicability::MachineApplicable,
@@ -533,7 +492,6 @@ pub const MASTER_ALLOW_ATTRIBUTE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllowAttribute, &ClippyLevel::Master),
     group: LintGroup::Restriction,
     url: ALLOW_ATTRIBUTE_ISSUE,
     applicability: Applicability::MachineApplicable,
@@ -565,7 +523,6 @@ pub const NOVICE_ALLOW_ATTRIBUTE_WITHOUT_REASON: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllowAttributeWithoutReason, &ClippyLevel::Novice),
     group: LintGroup::Restriction,
     url: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
     applicability: Applicability::Unspecified,
@@ -585,7 +542,6 @@ pub const EXPERT_ALLOW_ATTRIBUTE_WITHOUT_REASON: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllowAttributeWithoutReason, &ClippyLevel::Expert),
     group: LintGroup::Restriction,
     url: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
     applicability: Applicability::Unspecified,
@@ -605,7 +561,6 @@ pub const MASTER_ALLOW_ATTRIBUTE_WITHOUT_REASON: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AllowAttributeWithoutReason, &ClippyLevel::Master),
     group: LintGroup::Restriction,
     url: ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE,
     applicability: Applicability::Unspecified,
@@ -636,7 +591,6 @@ pub const NOVICE_ALMOST_COMPLETE_RANGE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Warn,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AlmostCompleteRange, &ClippyLevel::Novice),
     group: LintGroup::Suspicious,
     url: ALMOST_COMPLETE_RANGE_ISSUE,
     applicability: Applicability::MaybeIncorrect,
@@ -657,7 +611,6 @@ pub const EXPERT_ALMOST_COMPLETE_RANGE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Warn,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::AlmostCompleteRange, &ClippyLevel::Expert),
     group: LintGroup::Suspicious,
     url: ALMOST_COMPLETE_RANGE_ISSUE,
     applicability: Applicability::MaybeIncorrect,
@@ -677,7 +630,6 @@ pub const MASTER_ALMOST_COMPLETE_RANGE: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Warn,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AlmostCompleteRange, &ClippyLevel::Master),
     group: LintGroup::Suspicious,
     url: ALMOST_COMPLETE_RANGE_ISSUE,
     applicability: Applicability::MaybeIncorrect,
@@ -708,7 +660,6 @@ pub const NOVICE_ALMOST_SWAPPED: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AlmostSwapped, &ClippyLevel::Novice),
     group: LintGroup::Correctness,
     url: ALMOST_SWAPPED_ISSUE,
     applicability: Applicability::MaybeIncorrect,
@@ -728,7 +679,6 @@ pub const EXPERT_ALMOST_SWAPPED: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AlmostSwapped, &ClippyLevel::Expert),
     group: LintGroup::Correctness,
     url: ALMOST_SWAPPED_ISSUE,
     applicability: Applicability::MaybeIncorrect,
@@ -748,7 +698,6 @@ pub const MASTER_ALMOST_SWAPPED: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AlmostSwapped, &ClippyLevel::Master),
     group: LintGroup::Correctness,
     url: ALMOST_SWAPPED_ISSUE,
     applicability: Applicability::MaybeIncorrect,
@@ -779,7 +728,6 @@ pub const NOVICE_APPROX_CONSTANT: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::ApproxConstant, &ClippyLevel::Novice),
     group: LintGroup::Correctness,
     url: APPROX_CONSTANT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -799,7 +747,6 @@ pub const EXPERT_APPROX_CONSTANT: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::ApproxConstant, &ClippyLevel::Expert),
     group: LintGroup::Correctness,
     url: APPROX_CONSTANT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -819,7 +766,6 @@ pub const MASTER_APPROX_CONSTANT: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::ApproxConstant, &ClippyLevel::Master),
     group: LintGroup::Correctness,
     url: APPROX_CONSTANT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -850,7 +796,6 @@ pub const NOVICE_ARC_WITH_NO_SEND_SYNC: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Warn,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::ArcWithNoSendSync, &ClippyLevel::Novice),
     group: LintGroup::Suspicious,
     url: ARC_WITH_NO_SEND_SYNC_ISSUE,
     applicability: Applicability::Unspecified,
@@ -870,7 +815,6 @@ pub const EXPERT_ARC_WITH_NO_SEND_SYNC: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Warn,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::ArcWithNoSendSync, &ClippyLevel::Expert),
     group: LintGroup::Suspicious,
     url: ARC_WITH_NO_SEND_SYNC_ISSUE,
     applicability: Applicability::Unspecified,
@@ -890,7 +834,6 @@ pub const MASTER_ARC_WITH_NO_SEND_SYNC: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Warn,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::ArcWithNoSendSync, &ClippyLevel::Master),
     group: LintGroup::Correctness,
     url: ARC_WITH_NO_SEND_SYNC_ISSUE,
     applicability: Applicability::Unspecified,
@@ -922,7 +865,6 @@ pub const NOVICE_ARITHMETIC_SIDE_EFFECT: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::ArithmeticsSideEffects, &ClippyLevel::Novice),
     group: LintGroup::Restriction,
     url: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -942,7 +884,6 @@ pub const EXPERT_ARITHMETIC_SIDE_EFFECT: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Warn,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::ArithmeticsSideEffects, &ClippyLevel::Expert),
     group: LintGroup::Restriction,
     url: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -962,7 +903,6 @@ pub const MASTER_ARITHMETIC_SIDE_EFFECT: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Allow,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Warn, &Lint::ArithmeticsSideEffects, &ClippyLevel::Master),
     group: LintGroup::Restriction,
     url: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -997,7 +937,6 @@ pub const NOVICE_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AbsurdExtremeComparison, &ClippyLevel::Novice),
     group: LintGroup::Correctness,
     url: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -1017,7 +956,6 @@ pub const EXPERT_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AbsurdExtremeComparison, &ClippyLevel::Expert),
     group: LintGroup::Correctness,
     url: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -1037,7 +975,6 @@ pub const MASTER_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {
     default_clippy_severity: LintSeverity::Deny,
     use_clippy_severity: false,
     severity: LintSeverity::Deny,
-    why_default_severity: LintSeverity::Explain(&LintSeverity::Deny, &Lint::AbsurdExtremeComparison, &ClippyLevel::Master),
     group: LintGroup::Correctness,
     url: ARITHMETIC_SIDE_EFFECT_ISSUE,
     applicability: Applicability::Unspecified,
@@ -1047,9 +984,148 @@ pub const MASTER_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
 };
 
+#[doc = "The as_conversions lint id"]
+pub const AS_CONVERSIONS_ID: &str = "as_conversions";
+#[doc = "The as_conversions description"]
+pub const AS_CONVERSIONS_DESCRIPTION: &str = "Checks for usage of as conversions.\n#\n# Note that this lint is specialized in linting every single use of as regardless of whether good alternatives exist or not.\n#\n# If you want more precise lints for as, please consider using these separate lints: unnecessary_cast, cast_lossless/cast_possible_truncation/cast_possible_wrap/cast_precision_loss/cast_sign_loss, fn_to_numeric_cast(_with_truncation), char_lit_as_u8, ref_to_mut and ptr_as_ptr.\n#\n# There is a good explanation the reason why this lint should work in this way and how it is useful in this issue.\n#";
+#[doc = "The as_conversions know problem"]
+pub const AS_CONVERSIONS_KNOW_PROBLEM: Option<&'static str> = None;
+#[doc = "The as_conversions what it's bad"]
+pub const AS_CONVERSIONS_WHATS_BAD: &str = "The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.\n#\n# There are cases when it makes sense to use as, so the lint is Allow by default.";
+#[doc = "The as_conversions issue url"]
+pub const AS_CONVERSIONS_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions");
+
+#[doc = "The as_conversions for novice"]
+pub const NOVICE_AS_CONVERSIONS: ClippyLint = ClippyLint {
+    id: AS_CONVERSIONS_ID,
+    description: AS_CONVERSIONS_DESCRIPTION,
+    whats_bad: AS_CONVERSIONS_WHATS_BAD,
+    known_problems: AS_CONVERSIONS_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Allow,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Restriction,
+    url: AS_CONVERSIONS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
+};
+
+#[doc = "The as_conversions for expert"]
+pub const EXPERT_AS_CONVERSIONS: ClippyLint = ClippyLint {
+    id: AS_CONVERSIONS_ID,
+    description: AS_CONVERSIONS_DESCRIPTION,
+    whats_bad: AS_CONVERSIONS_WHATS_BAD,
+    known_problems: AS_CONVERSIONS_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Allow,
+    use_clippy_severity: false,
+    severity: LintSeverity::Warn,
+    group: LintGroup::Restriction,
+    url: AS_CONVERSIONS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
+#[doc = "The as_conversions for master"]
+pub const MASTER_AS_CONVERSIONS: ClippyLint = ClippyLint {
+    id: AS_CONVERSIONS_ID,
+    description: AS_CONVERSIONS_DESCRIPTION,
+    whats_bad: AS_CONVERSIONS_WHATS_BAD,
+    known_problems: AS_CONVERSIONS_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Deny,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Restriction,
+    url: AS_CONVERSIONS_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
+
+#[doc = "The as underscore lint id"]
+pub const AS_UNDERSCORE_ID: &str = "as_underscore";
+#[doc = "The as underscore description"]
+pub const AS_UNDERSCORE_DESCRIPTION: &str = "Checks for usage of as conversions.\n#\n# Note that this lint is specialized in linting every single use of as regardless of whether good alternatives exist or not.\n#\n# If you want more precise lints for as, please consider using these separate lints: unnecessary_cast, cast_lossless/cast_possible_truncation/cast_possible_wrap/cast_precision_loss/cast_sign_loss, fn_to_numeric_cast(_with_truncation), char_lit_as_u8, ref_to_mut and ptr_as_ptr.\n#\n# There is a good explanation the reason why this lint should work in this way and how it is useful in this issue.\n#";
+
+#[doc = "The as underscore know problem"]
+pub const AS_UNDERSCORE_KNOW_PROBLEM: Option<&'static str> = None;
+#[doc = "The as underscore what it's bad"]
+pub const AS_UNDERSCORE_WHATS_BAD: &str = "The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.\n#\n# There are cases when it makes sense to use as, so the lint is Allow by default.";
+
+#[doc = "The as underscore issue url"]
+pub const AS_UNDERSCORE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore");
+
+#[doc = "The as_conversions for novice"]
+pub const NOVICE_AS_UNDERSCORE: ClippyLint = ClippyLint {
+    id: AS_UNDERSCORE_ID,
+    description: AS_UNDERSCORE_DESCRIPTION,
+    whats_bad: AS_UNDERSCORE_WHATS_BAD,
+    known_problems: AS_UNDERSCORE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Deny,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Restriction,
+    url: AS_UNDERSCORE_ISSUE,
+    applicability: Applicability::Unspecified,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
+#[doc = "The as underscore for expert"]
+pub const EXPERT_AS_UNDERSCORE: ClippyLint = ClippyLint {
+    id: AS_UNDERSCORE_ID,
+    description: AS_UNDERSCORE_DESCRIPTION,
+    whats_bad: AS_UNDERSCORE_WHATS_BAD,
+    known_problems: AS_UNDERSCORE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Deny,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Restriction,
+    url: AS_UNDERSCORE_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
+#[doc = "The as_conversions for master"]
+pub const MASTER_AS_UNDERSCORE: ClippyLint = ClippyLint {
+    id: AS_UNDERSCORE_ID,
+    description: AS_UNDERSCORE_DESCRIPTION,
+    whats_bad: AS_UNDERSCORE_WHATS_BAD,
+    known_problems: AS_UNDERSCORE_KNOW_PROBLEM,
+    enabled_by_default: true,
+    default_clippy_severity: LintSeverity::Deny,
+    use_clippy_severity: false,
+    severity: LintSeverity::Deny,
+    group: LintGroup::Restriction,
+    url: AS_UNDERSCORE_ISSUE,
+    applicability: Applicability::MachineApplicable,
+    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
+    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
+};
+
 
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 10] = [
+pub const NOVICE_LINTS: [ClippyLint; 12] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -1060,10 +1136,12 @@ pub const NOVICE_LINTS: [ClippyLint; 10] = [
     NOVICE_ARC_WITH_NO_SEND_SYNC,
     NOVICE_ARITHMETIC_SIDE_EFFECT,
     NOVICE_ABSURD_EXTREME_COMPARISON,
+    NOVICE_AS_CONVERSIONS,
+    NOVICE_AS_UNDERSCORE,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 10] = [
+pub const EXPERT_LINTS: [ClippyLint; 12] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -1074,10 +1152,12 @@ pub const EXPERT_LINTS: [ClippyLint; 10] = [
     EXPERT_ARC_WITH_NO_SEND_SYNC,
     EXPERT_ARITHMETIC_SIDE_EFFECT,
     EXPERT_ABSURD_EXTREME_COMPARISON,
+    EXPERT_AS_CONVERSIONS,
+    EXPERT_AS_UNDERSCORE,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 10] = [
+pub const MASTER_LINTS: [ClippyLint; 12] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -1088,6 +1168,8 @@ pub const MASTER_LINTS: [ClippyLint; 10] = [
     MASTER_ARC_WITH_NO_SEND_SYNC,
     MASTER_ARITHMETIC_SIDE_EFFECT,
     MASTER_ABSURD_EXTREME_COMPARISON,
+    MASTER_AS_CONVERSIONS,
+    MASTER_AS_UNDERSCORE,
 ];
 
 #[doc = "Novice configuration filename"]
@@ -1132,12 +1214,11 @@ pub fn generate_config_file(filename: &str, lints: &[ClippyLint]) -> Result<(), 
             &lint.whats_bad.replace("\n", "\n# ")
         )?;
         if let Some(uri) = lint.url {
-            writeln!(file, "#\n# Issue url : {}", uri.replace("\n", "#\n# "))?;
+            writeln!(file, "#\n# Issue url : {}\n#", uri)?;
         }
         writeln!(
             file,
-            "#{}\n# Clippy decrease possible {}\n#\n# Clippy increase possible {}\n#\n# Default configuration decrease possible {}\n#\n# Default configuration increase possible {}\n#",
-            lint.why_default_severity,
+            "# Clippy decrease possible {}\n#\n# Clippy increase possible {}\n#\n# Default configuration decrease possible {}\n#\n# Default configuration increase possible {}\n#",
             lint.all_decrease_clippy_default_possible_severity,
             lint.all_increase_clippy_default_possible_severity,
             lint.all_decrease_config_default_possible_severity,

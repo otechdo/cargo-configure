@@ -11,7 +11,7 @@
 # Note: One exception to this is code from macro expansion - this does not lint such cases, as using absolute paths is the proper way of referencing items in one.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absolute_paths
-#value none
+#
 # Clippy decrease possible value none
 #
 # Clippy increase possible values : (warn, deny)
@@ -36,7 +36,7 @@ use-clippy-severity = false
 # Crates which have no_std compatibility and may optionally require alloc may wish to ensure types are imported from core to ensure disabling alloc does not cause the crate to fail to compile. This lint is also useful for crates migrating to become no_std compatible.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core
-#value none
+#
 # Clippy decrease possible value none
 #
 # Clippy increase possible values : (warn, deny)
@@ -61,7 +61,7 @@ use-clippy-severity = false
 # #[expect] attributes suppress the lint emission, but emit a warning, if the expectation is unfulfilled. This can be useful to be notified when the lint is no longer triggered.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes
-#value none
+#
 # Clippy decrease possible value none
 #
 # Clippy increase possible values : (warn, deny)
@@ -86,7 +86,7 @@ use-clippy-severity = false
 # Justifying each allow helps readers understand the reasoning, and may allow removing allow attributes if their purpose is obsolete.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason
-#value none
+#
 # Clippy decrease possible value none
 #
 # Clippy increase possible values : (warn, deny)
@@ -111,7 +111,7 @@ use-clippy-severity = false
 # This ('a'..'z') is almost certainly a typo meant to include all letters.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range
-#value none
+#
 # Clippy decrease possible value : allow
 #
 # Clippy increase possible value : deny
@@ -136,7 +136,7 @@ use-clippy-severity = false
 # This looks like a failed attempt to swap.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swapped
-#value none
+#
 # Clippy decrease possible values : (allow, warn)
 #
 # Clippy increase possible value none
@@ -161,7 +161,7 @@ use-clippy-severity = false
 # Usually, the definition in the standard library is more precise than what people come up with. If you find that your definition is actually more precise.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant
-#value none
+#
 # Clippy decrease possible values : (allow, warn)
 #
 # Clippy increase possible value none
@@ -186,7 +186,7 @@ use-clippy-severity = false
 # Arc<T> is a thread-safe Rc<T> and guarantees that updates to the reference counter use atomic operations. To send an Arc<T> across thread boundaries and share ownership between multiple threads, T must be both Send and Sync, so either T should be made Send + Sync or a Rc should be used instead of an Arc.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arc_with_non_send_sync
-#value none
+#
 # Clippy decrease possible value : allow
 #
 # Clippy increase possible value : deny
@@ -211,7 +211,7 @@ use-clippy-severity = false
 # For integers, overflow will trigger a panic in debug builds or wrap the result in release mode; division by zero will cause a panic in either mode. As a result, it is desirable to explicitly call checked, wrapping or saturating arithmetic methods.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
-#value none
+#
 # Clippy decrease possible value none
 #
 # Clippy increase possible values : (warn, deny)
@@ -236,7 +236,7 @@ use-clippy-severity = false
 # An expression like min <= x may misleadingly imply that it is possible for x to be less than the minimum. Expressions like max < x are probably mistakes.
 #
 # Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
-#value none
+#
 # Clippy decrease possible values : (allow, warn)
 #
 # Clippy increase possible value none
@@ -246,6 +246,74 @@ use-clippy-severity = false
 # Default configuration increase possible value none
 #
 [absurd_extreme_comparisons]
+group = "correctness"
+applicability = "unspecified"
+enabled = true
+config-severity = "deny"
+clippy-severity = "deny"
+use-clippy-severity = false
+
+#
+# Lint clippy::as_conversions
+#
+# Checks for usage of as conversions.
+#
+# Note that this lint is specialized in linting every single use of as regardless of whether good alternatives exist or not.
+#
+# If you want more precise lints for as, please consider using these separate lints: unnecessary_cast, cast_lossless/cast_possible_truncation/cast_possible_wrap/cast_precision_loss/cast_sign_loss, fn_to_numeric_cast(_with_truncation), char_lit_as_u8, ref_to_mut and ptr_as_ptr.
+#
+# There is a good explanation the reason why this lint should work in this way and how it is useful in this issue.
+#
+#
+# The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.
+# #
+# # There are cases when it makes sense to use as, so the lint is Allow by default.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions
+#
+# Clippy decrease possible values : (allow, warn)
+#
+# Clippy increase possible value none
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[as_conversions]
+group = "correctness"
+applicability = "unspecified"
+enabled = true
+config-severity = "deny"
+clippy-severity = "deny"
+use-clippy-severity = false
+
+#
+# Lint clippy::as_underscore
+#
+# Checks for usage of as conversions.
+#
+# Note that this lint is specialized in linting every single use of as regardless of whether good alternatives exist or not.
+#
+# If you want more precise lints for as, please consider using these separate lints: unnecessary_cast, cast_lossless/cast_possible_truncation/cast_possible_wrap/cast_precision_loss/cast_sign_loss, fn_to_numeric_cast(_with_truncation), char_lit_as_u8, ref_to_mut and ptr_as_ptr.
+#
+# There is a good explanation the reason why this lint should work in this way and how it is useful in this issue.
+#
+#
+# The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.
+# #
+# # There are cases when it makes sense to use as, so the lint is Allow by default.
+#
+# Issue url : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore
+#
+# Clippy decrease possible values : (allow, warn)
+#
+# Clippy increase possible value none
+#
+# Default configuration decrease possible values : (allow, warn)
+#
+# Default configuration increase possible value none
+#
+[as_underscore]
 group = "correctness"
 applicability = "unspecified"
 enabled = true
