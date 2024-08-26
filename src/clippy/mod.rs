@@ -18,3 +18,5 @@ pub mod almost_swapped;
 pub mod approx_constant;
 #[doc = "arc_with_non_send_sync lint"]
 pub mod arc_with_non_send_sync;
+#[doc = "arithmetic_side_effects lint"]
+pub mod arithmetic_side_effects;
