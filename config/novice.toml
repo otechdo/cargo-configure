@@ -70,3 +70,19 @@ severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/arithmetic_side_effects"
 
+# Checks for usage of as conversions.
+[as_conversions]
+group = "restriction"
+applicability = "unspecified"
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/as_conversions"
+
+# Checks for the usage of as _ conversion using inferred type.
+[as_underscore]
+group = "restriction"
+applicability = "unspecified"
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/as_underscore"
+
