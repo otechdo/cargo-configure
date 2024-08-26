@@ -1,4 +1,5 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
+
 #[doc = "The blanket_clippy_restriction_lints id"]
 pub const BLOCK_IN_CONDITION_ID: &str = "blanket_clippy_restriction_lints";
 #[doc = "The blanket_clippy_restriction_lints description"]
@@ -6,9 +7,11 @@ pub const BLOCK_IN_CONDITION_DESCRIPTION: &str = "Checks for if and match condit
 #[doc = "The blanket_clippy_restriction_lints know problem"]
 pub const BLOCK_IN_CONDITION_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The blanket_clippy_restriction_lints what it's bad"]
-pub const BLOCK_IN_CONDITION_WHATS_BAD: &str = "Style, using blocks in the condition makes it hard to read.";
+pub const BLOCK_IN_CONDITION_WHATS_BAD: &str =
+    "Style, using blocks in the condition makes it hard to read.";
 #[doc = "The blanket_clippy_restriction_lints uri issue"]
-pub const BLOCK_IN_CONDITION_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blocks_in_conditions");
+pub const BLOCK_IN_CONDITION_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blocks_in_conditions");
 
 #[doc = "The blanket_clippy_restriction_lints for novice"]
 pub const NOVICE_BLOCK_IN_CONDITION: ClippyLint = ClippyLint {

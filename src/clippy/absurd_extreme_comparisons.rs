@@ -1,4 +1,4 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The absurd extreme comparisons lint id"]
 pub const ABSURD_EXTREME_COMPARISON_ID: &str = "absurd_extreme_comparisons";
@@ -14,7 +14,8 @@ pub const ABSURD_EXTREME_COMPARISON_KNOW_PROBLEM: Option<&'static str> = Some("F
 pub const ABSURD_EXTREME_COMPARISON_WHATS_BAD: &str = "An expression like min <= x may misleadingly imply that it is possible for x to be less than the minimum. Expressions like max < x are probably mistakes.";
 
 #[doc = "The absurd extreme comparisons uri issue"]
-pub const ABSURD_EXTREME_COMPARISON_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absurd_extreme_comparisons");
+pub const ABSURD_EXTREME_COMPARISON_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absurd_extreme_comparisons");
 
 #[doc = "The absurd extreme comparisons for novice"]
 pub const NOVICE_ABSURD_EXTREME_COMPARISON: ClippyLint = ClippyLint {

@@ -1,4 +1,5 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
+
 #[doc = "The assigning clones id"]
 pub const ASSIGNING_CLONE_ID: &str = "assigning_clones";
 #[doc = "The assigning clones description"]
@@ -8,7 +9,8 @@ pub const ASSIGNING_CLONE_KNOW_PROBLEM: Option<&'static str> = Some("While forbi
 #[doc = "The assigning clones what it's bad"]
 pub const ASSIGNING_CLONE_WHATS_BAD: &str = "Custom Clone::clone_from() or ToOwned::clone_into implementations allow the objects to share resources and therefore avoid allocations.";
 #[doc = "The assigning clones uri issue"]
-pub const ASSIGNING_CLONE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assigning_clones");
+pub const ASSIGNING_CLONE_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assigning_clones");
 
 #[doc = "The assigning clones for novice"]
 pub const NOVICE_ASSIGNING_CLONE: ClippyLint = ClippyLint {

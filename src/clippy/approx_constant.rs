@@ -1,4 +1,4 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The approx constant id"]
 pub const APPROX_CONSTANT_ID: &str = "approx_constant";
@@ -9,7 +9,8 @@ pub const APPROX_CONSTANT_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The approx constant what it's bad"]
 pub const APPROX_CONSTANT_WHATS_BAD: &str = "Usually, the definition in the standard library is more precise than what people come up with. If you find that your definition is actually more precise.";
 #[doc = "The approx constant issue uri"]
-pub const APPROX_CONSTANT_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant");
+pub const APPROX_CONSTANT_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant");
 
 #[doc = "The almost complete range for novice"]
 pub const NOVICE_APPROX_CONSTANT: ClippyLint = ClippyLint {

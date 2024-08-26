@@ -1,4 +1,4 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 #[doc = "The as_conversions lint id"]
 pub const AS_CONVERSIONS_ID: &str = "as_conversions";
 #[doc = "The as_conversions description"]
@@ -8,7 +8,8 @@ pub const AS_CONVERSIONS_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The as_conversions what it's bad"]
 pub const AS_CONVERSIONS_WHATS_BAD: &str = "The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.\n#\n# There are cases when it makes sense to use as, so the lint is Allow by default.";
 #[doc = "The as_conversions uri issue"]
-pub const AS_CONVERSIONS_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions");
+pub const AS_CONVERSIONS_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions");
 
 #[doc = "The as_conversions for novice"]
 pub const NOVICE_AS_CONVERSIONS: ClippyLint = ClippyLint {
@@ -66,4 +67,3 @@ pub const MASTER_AS_CONVERSIONS: ClippyLint = ClippyLint {
     all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
     all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
 };
-

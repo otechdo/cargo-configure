@@ -1,4 +1,4 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The allow attributes without reason id"]
 pub const ALLOW_ATTRIBUTE_WITHOUT_REASON_ID: &str = "allow_attributes_without_reason";
@@ -10,7 +10,9 @@ pub const ALLOW_ATTRIBUTE_WITHOUT_REASON_KNOW_PROBLEM: Option<&'static str> = No
 #[doc = "The allow attributes without reason what it's bad"]
 pub const ALLOW_ATTRIBUTE_WITHOUT_REASON_WHATS_BAD: &str = "Justifying each allow helps readers understand the reasoning, and may allow removing allow attributes if their purpose is obsolete.";
 #[doc = "The allow attributes without reason issue uri"]
-pub const ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason");
+pub const ALLOW_ATTRIBUTE_WITHOUT_REASON_ISSUE: Option<&'static str> = Some(
+    "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason",
+);
 
 #[doc = "The allow attributes without reason lint for novice"]
 pub const NOVICE_ALLOW_ATTRIBUTE_WITHOUT_REASON: ClippyLint = ClippyLint {

@@ -1,4 +1,4 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The as underscore lint id"]
 pub const AS_UNDERSCORE_ID: &str = "as_underscore";
@@ -11,7 +11,8 @@ pub const AS_UNDERSCORE_KNOW_PROBLEM: Option<&'static str> = None;
 pub const AS_UNDERSCORE_WHATS_BAD: &str = "The as conversions will perform many kinds of conversions, including silently lossy conversions and dangerous coercions.\n#\n# There are cases when it makes sense to use as, so the lint is Allow by default.";
 
 #[doc = "The as underscore uri issue"]
-pub const AS_UNDERSCORE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore");
+pub const AS_UNDERSCORE_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore");
 
 #[doc = "The as_conversions for novice"]
 pub const NOVICE_AS_UNDERSCORE: ClippyLint = ClippyLint {

@@ -1,14 +1,19 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
+
 #[doc = "The assertions on result states id"]
 pub const ASSERTIONS_ON_RESULTS_STATES_ID: &str = "assertions_on_result_states";
 #[doc = "The assertions on result states description"]
-pub const ASSERTIONS_ON_RESULTS_STATES_DESCRIPTION: &str = "Checks for assert!(r.is_ok()) or assert!(r.is_err()) calls.";
+pub const ASSERTIONS_ON_RESULTS_STATES_DESCRIPTION: &str =
+    "Checks for assert!(r.is_ok()) or assert!(r.is_err()) calls.";
 #[doc = "The assertions on result states know problem"]
-pub const ASSERTIONS_ON_RESULTS_STATES_KNOW_PROBLEM: Option<&'static str> = Some("The suggested replacement decreases the readability of code and log output.");
+pub const ASSERTIONS_ON_RESULTS_STATES_KNOW_PROBLEM: Option<&'static str> =
+    Some("The suggested replacement decreases the readability of code and log output.");
 #[doc = "The assertions on result states what it's bad"]
-pub const ASSERTIONS_ON_RESULTS_STATES_WHATS_BAD: &str = "This form of assertion does not show any of the information present in the Result other than which variant it isn’t.";
+pub const ASSERTIONS_ON_RESULTS_STATES_WHATS_BAD: &str = "This form of assertion does not show any of the information present in the Result other than which variant is none";
 #[doc = "The as underscore uri issue"]
-pub const ASSERTIONS_ON_RESULTS_STATES_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states");
+pub const ASSERTIONS_ON_RESULTS_STATES_ISSUE: Option<&'static str> = Some(
+    "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states",
+);
 
 #[doc = "The assertions on result states for novice"]
 pub const NOVICE_ASSERTIONS_ON_RESULTS: ClippyLint = ClippyLint {

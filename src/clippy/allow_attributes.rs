@@ -1,15 +1,18 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
+
 #[doc = "The allow attributes id"]
 pub const ALLOW_ATTRIBUTE_ID: &str = "allow_attributes";
 #[doc = "The allow attributes description"]
-pub const ALLOW_ATTRIBUTE_DESCRIPTION: &str = "Checks for usage of the #[allow] attribute and suggests replacing it with the #[expect]";
+pub const ALLOW_ATTRIBUTE_DESCRIPTION: &str =
+    "Checks for usage of the #[allow] attribute and suggests replacing it with the #[expect]";
 
 #[doc = "The allow attributes know problem"]
 pub const ALLOW_ATTRIBUTE_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The allow attributes what it's bad"]
 pub const ALLOW_ATTRIBUTE_WHATS_BAD: &str = "#[expect] attributes suppress the lint emission, but emit a warning, if the expectation is unfulfilled. This can be useful to be notified when the lint is no longer triggered.";
 #[doc = "The  allow attributes uri issue"]
-pub const ALLOW_ATTRIBUTE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes");
+pub const ALLOW_ATTRIBUTE_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes");
 
 #[doc = "The allow attributes lint for novice"]
 pub const NOVICE_ALLOW_ATTRIBUTE: ClippyLint = ClippyLint {

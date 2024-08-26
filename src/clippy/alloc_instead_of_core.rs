@@ -1,4 +1,5 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
+
 #[doc = "The clippy alloc instead of core id"]
 pub const ALLOC_INSTEAD_OF_CORE_ID: &str = "alloc_instead_of_core";
 #[doc = "The clippy alloc instead of core description"]
@@ -9,7 +10,8 @@ pub const ALLOC_INSTEAD_OF_CORE_KNOW_PROBLEM: Option<&'static str> = Some("The l
 #[doc = "The clippy alloc instead of core what it's bad"]
 pub const ALLOC_INSTEAD_OF_CORE_WHATS_BAD: &str = "Crates which have no_std compatibility and may optionally require alloc may wish to ensure types are imported from core to ensure disabling alloc does not cause the crate to fail to compile. This lint is also useful for crates migrating to become no_std compatible.";
 #[doc = "The clippy alloc instead of core what it's bad uri issue"]
-pub const ALLOC_INSTEAD_OF_CORE_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core");
+pub const ALLOC_INSTEAD_OF_CORE_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core");
 
 #[doc = "clippy alloc instead of core lint for novice"]
 pub const NOVICE_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {

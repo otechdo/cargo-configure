@@ -1,14 +1,17 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
+
 #[doc = "The assign op pattern id"]
 pub const ASSIGN_OF_PATTERN_ID: &str = "assign_op_pattern";
 #[doc = "The assign op pattern description"]
-pub const ASSIGN_OP_PATTERN_DESCRIPTION: &str = "Checks for a = a op b or a = b commutative_op a patterns.";
+pub const ASSIGN_OP_PATTERN_DESCRIPTION: &str =
+    "Checks for a = a op b or a = b commutative_op a patterns.";
 #[doc = "The assign op pattern know problem"]
 pub const ASSIGN_OP_PATTERN_KNOW_PROBLEM: Option<&'static str> = Some("While forbidden by the spec, OpAssign traits may have implementations that differ from the regular Op impl.");
 #[doc = "The assign op pattern what it's bad"]
 pub const ASSIGN_OP_PATTERN_WHATS_BAD: &str = "These can be written as the shorter a op= b.";
 #[doc = "The assign op pattern uri issue"]
-pub const ASSIGN_OP_PATTERN_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern");
+pub const ASSIGN_OP_PATTERN_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern");
 
 #[doc = "The assign op pattern for novice"]
 pub const NOVICE_ASSIGN_OP_PATTERN: ClippyLint = ClippyLint {

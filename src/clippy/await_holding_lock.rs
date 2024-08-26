@@ -1,15 +1,17 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The await holding lock id"]
 pub const AWAIT_HOLDING_LOCK_ID: &str = "await_holding_lock";
 #[doc = "The await holding lock description"]
-pub const AWAIT_HOLDING_LOCK_DESCRIPTION: &str = "Checks for calls to await while holding a non-async-aware MutexGuard.";
+pub const AWAIT_HOLDING_LOCK_DESCRIPTION: &str =
+    "Checks for calls to await while holding a non-async-aware MutexGuard.";
 #[doc = "The await holding lock know problem"]
 pub const AWAIT_HOLDING_LOCK_KNOW_PROBLEM: Option<&'static str> = Some("Will report false positive for explicitly dropped guards (#6446). A workaround for this is to wrap the .lock() call in a block instead of explicitly dropping the guard.");
 #[doc = "The await holding lock what it's bad"]
 pub const AWAIT_HOLDING_LOCK_WHATS_BAD: &str = "The Mutex types found in [std::sync][https://doc.rust-lang.org/stable/std/sync/] and parking_lot are not designed to operate in an async context across await points.\n#\n# There are two potential solutions. One is to use an async-aware Mutex type. Many asynchronous foundation crates provide such a Mutex type. The other solution is to ensure the mutex is unlocked before calling await, either by introducing a scope or an explicit call to Drop::drop.";
 #[doc = "The await holding lock uri issue"]
-pub const AWAIT_HOLDING_LOCK_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_lock");
+pub const AWAIT_HOLDING_LOCK_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_lock");
 
 #[doc = "The await holding lock for novice"]
 pub const NOVICE_AWAIT_HOLDING_LOCK: ClippyLint = ClippyLint {

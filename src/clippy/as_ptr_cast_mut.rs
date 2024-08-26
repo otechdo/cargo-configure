@@ -1,15 +1,17 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The as ptr cast mut id"]
 pub const AS_PTR_CAST_MUT_ID: &str = "as_ptr_cast_mut";
 #[doc = "The as ptr cast mut description"]
-pub const AS_PTR_CAST_MUT_DESCRIPTION: &str = "Checks for the result of a &self-taking as_ptr being cast to a mutable pointer.";
+pub const AS_PTR_CAST_MUT_DESCRIPTION: &str =
+    "Checks for the result of a &self-taking as_ptr being cast to a mutable pointer.";
 #[doc = "The as ptr cast mut know problem"]
 pub const AS_PTR_CAST_MUT_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The as ptr cast mut what it's bad"]
-pub const AS_PTR_CAST_MUT_WHATS_BAD: &str = "Since as_ptr takes a &self, the pointer won’t have write permissions unless interior mutability is used, making it unlikely that having it as a mutable pointer is correct.";
+pub const AS_PTR_CAST_MUT_WHATS_BAD: &str = "Since as_ptr takes a &self, the pointer no have write permissions unless interior mutability is used, making it unlikely that having it as a mutable pointer is correct.";
 #[doc = "The as ptr cast mut uri issue"]
-pub const AS_PTR_CAST_MUT_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut");
+pub const AS_PTR_CAST_MUT_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut");
 
 #[doc = "The as ptr cast mut for novice"]
 pub const NOVICE_AS_PTR_CAST_MUT: ClippyLint = ClippyLint {

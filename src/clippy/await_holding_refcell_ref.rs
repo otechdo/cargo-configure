@@ -1,15 +1,17 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The await holding refcell ref id"]
 pub const AWAIT_HOLDING_REFCELL_REF_ID: &str = "await_holding_refcell_ref";
 #[doc = "The await holding refcell ref description"]
-pub const AWAIT_HOLDING_REFCELL_REF_DESCRIPTION: &str = "Checks for calls to await while holding a RefCell, Ref, or RefMut.";
+pub const AWAIT_HOLDING_REFCELL_REF_DESCRIPTION: &str =
+    "Checks for calls to await while holding a RefCell, Ref, or RefMut.";
 #[doc = "The await holding refcell ref know problem"]
 pub const AWAIT_HOLDING_REFCELL_REF_KNOW_PROBLEM: Option<&'static str> = Some("Will report false positive for explicitly dropped guards (#6446). A workaround for this is to wrap the .lock() call in a block instead of explicitly dropping the guard.");
 #[doc = "The await holding refcell ref what it's bad"]
 pub const AWAIT_HOLDING_REFCELL_REF_WHATS_BAD: &str = "RefCell refs only check for exclusive mutable access at runtime. Holding a RefCell ref across an await suspension point risks panics from a mutable ref shared while other refs are outstanding.";
 #[doc = "The await holding refcell ref uri issue"]
-pub const AWAIT_HOLDING_REFCELL_REF_LOCK_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_refcell_ref");
+pub const AWAIT_HOLDING_REFCELL_REF_LOCK_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_refcell_ref");
 
 #[doc = "The await holding refcell ref for novice"]
 pub const NOVICE_AWAIT_HOLDING_REFCELL_REF: ClippyLint = ClippyLint {

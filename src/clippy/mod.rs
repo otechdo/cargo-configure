@@ -1,6 +1,3 @@
-#[doc = "The core of lint configuration"]
-pub mod core;
-
 #[doc = "The absolute_path clippy lint"]
 pub mod absolute_path;
 

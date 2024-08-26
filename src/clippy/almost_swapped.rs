@@ -1,4 +1,4 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
 
 #[doc = "The almost swapped id"]
 pub const ALMOST_SWAPPED_ID: &str = "almost_swapped";
@@ -9,7 +9,8 @@ pub const ALMOST_SWAPPED_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The almost swapped what it's bad"]
 pub const ALMOST_SWAPPED_WHATS_BAD: &str = "This looks like a failed attempt to swap.";
 #[doc = "The almost swapped issue uri"]
-pub const ALMOST_SWAPPED_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swapped");
+pub const ALMOST_SWAPPED_ISSUE: Option<&'static str> =
+    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swapped");
 
 #[doc = "The almost complete range for novice"]
 pub const NOVICE_ALMOST_SWAPPED: ClippyLint = ClippyLint {

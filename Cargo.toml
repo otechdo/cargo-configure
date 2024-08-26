@@ -1,9 +1,11 @@
 [package]
 name = "cargo-configure"
 version = "0.1.0"
+description = "Configure a cargo project"
 edition = "2021"
-
-[dependencies]
-indicatif = "0.17.8"
-inquire = "0.7.5"
-toml = "0.8.19"
+license = "AGPL-3.0"
+keywords = ["cargo", "configure", "clippy", "teams"]
+categories = ["development-tools"]
+repository = "https://github.com/otechdo/cargo-configure"
+authors = ["Willy Micieli"]
+readme = "README.md"

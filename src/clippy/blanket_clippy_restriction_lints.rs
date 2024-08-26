@@ -1,14 +1,18 @@
-use crate::clippy::core::{Applicability, ClippyLint, LintGroup, LintSeverity};
+use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
+
 #[doc = "The blanket clippy restriction lints id"]
 pub const BLANKET_CLIPPY_RESTRICTION_LINTS_ID: &str = "blanket_clippy_restriction_lints";
 #[doc = "The blanket clippy restriction lints description"]
-pub const BLANKET_CLIPPY_RESTRICTION_LINTS_DESCRIPTION: &str = "Checks for warn/deny/forbid attributes targeting the whole clippy::restriction category.";
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_DESCRIPTION: &str =
+    "Checks for warn/deny/forbid attributes targeting the whole clippy::restriction category.";
 #[doc = "The blanket clippy restriction lints know problem"]
 pub const BLANKET_CLIPPY_RESTRICTION_LINTS_KNOW_PROBLEM: Option<&'static str> = None;
 #[doc = "The blanket clippy restriction lints what it's bad"]
 pub const BLANKET_CLIPPY_RESTRICTION_LINTS_WHATS_BAD: &str = "Restriction lints sometimes are in contrast with other lints or even go against idiomatic rust. These lints should only be enabled on a lint-by-lint basis and with careful consideration.";
 #[doc = "The blanket clippy restriction lints uri issue"]
-pub const BLANKET_CLIPPY_RESTRICTION_LINTS_ISSUE: Option<&'static str> = Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blanket_clippy_restriction_lints");
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_ISSUE: Option<&'static str> = Some(
+    "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blanket_clippy_restriction_lints",
+);
 
 #[doc = "The blanket clippy restriction lints for novice"]
 pub const NOVICE_BLANKET_CLIPPY_RESTRICTION_LINTS: ClippyLint = ClippyLint {
