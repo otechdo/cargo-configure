@@ -46,3 +46,11 @@ severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/almost_complete_range"
 
+# Checks for floating point literals that approximate
+[approx_constant]
+group = "correctness"
+applicability = "maybe-incorrect"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/approx_constant"
+
