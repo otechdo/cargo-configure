@@ -2,9 +2,10 @@
 pub mod generate;
 use std::fmt::{Display, Formatter};
 
-#[doc = "The clippy prefix"]
-pub const ID_PREFIX: &str = "clippy::";
-
+#[doc = "the base uri for doc link"]
+pub const DOC_BASE_LINK: &str = "https://rust-lang.github.io/rust-clippy/master/index.html#";
+#[doc = "The base uri for issue link"]
+pub const ISSUE_BASE_LINK: &str = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue";
 #[doc = "All developer level"]
 #[derive(Copy, Clone)]
 pub enum ClippyLevel {
@@ -136,30 +137,20 @@ pub struct ClippyLint<'a> {
     pub id: &'static str,
     #[doc = "The lint description"]
     pub description: &'static str,
-    #[doc = "The lint explication what is bad"]
-    pub whats_bad: &'static str,
-    #[doc = "The lint know problem"]
-    pub known_problems: Option<&'static str>,
-    #[doc = "Set config lint enabled or disabled"]
-    pub enabled_by_default: bool,
     #[doc = "Set lint severity can be allow, warn, deny based on clippy"]
-    pub default_clippy_severity: LintSeverity<'a>,
-    #[doc = "Define the config policy for allow, warn, deny severity"]
-    pub use_clippy_severity: bool,
+    pub severity_by_clippy: LintSeverity<'a>,
     #[doc = "Set the config severity to allow or warn or deny"]
-    pub severity: LintSeverity<'a>,
+    pub severity_by_config: LintSeverity<'a>,
     #[doc = "Set the lint group"]
     pub group: LintGroup,
-    #[doc = "Set the lint issue uri"]
-    pub issue: Option<&'static str>,
     #[doc = "Set the applicability value"]
     pub applicability: Applicability,
     #[doc = "Set all values possible to increase the default config value"]
-    pub all_increase_config_default_possible_severity: LintSeverity<'a>,
+    pub increase_config: LintSeverity<'a>,
     #[doc = "Set all values possible to decrease the default config value"]
-    pub all_decrease_config_default_possible_severity: LintSeverity<'a>,
+    pub decrease_config: LintSeverity<'a>,
     #[doc = "Set all values possible to increase the default clippy value"]
-    pub all_increase_clippy_default_possible_severity: LintSeverity<'a>,
+    pub increase_clippy: LintSeverity<'a>,
     #[doc = "Set all values possible to decrease the default clippy value"]
-    pub all_decrease_clippy_default_possible_severity: LintSeverity<'a>,
+    pub decrease_clippy: LintSeverity<'a>,
 }

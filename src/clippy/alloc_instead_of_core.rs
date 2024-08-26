@@ -1,71 +1,107 @@
-use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
-
-#[doc = "The clippy alloc instead of core id"]
-pub const ALLOC_INSTEAD_OF_CORE_ID: &str = "alloc_instead_of_core";
-#[doc = "The clippy alloc instead of core description"]
-pub const ALLOC_INSTEAD_OF_CORE_DESCRIPTION: &str =
-    "Finds items imported through alloc when available through core.";
-#[doc = "The clippy alloc instead of core know problem"]
-pub const ALLOC_INSTEAD_OF_CORE_KNOW_PROBLEM: Option<&'static str> = Some("The lint is only partially aware of the required MSRV for items that were originally in std but moved to core.");
-#[doc = "The clippy alloc instead of core what it's bad"]
-pub const ALLOC_INSTEAD_OF_CORE_WHATS_BAD: &str = "Crates which have no_std compatibility and may optionally require alloc may wish to ensure types are imported from core to ensure disabling alloc does not cause the crate to fail to compile. This lint is also useful for crates migrating to become no_std compatible.";
-#[doc = "The clippy alloc instead of core what it's bad uri issue"]
-pub const ALLOC_INSTEAD_OF_CORE_ISSUE: Option<&'static str> =
-    Some("https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core");
-
-#[doc = "clippy alloc instead of core lint for novice"]
-pub const NOVICE_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
-    id: ALLOC_INSTEAD_OF_CORE_ID,
-    description: ALLOC_INSTEAD_OF_CORE_DESCRIPTION,
-    whats_bad: ALLOC_INSTEAD_OF_CORE_WHATS_BAD,
-    known_problems: ALLOC_INSTEAD_OF_CORE_KNOW_PROBLEM,
-    enabled_by_default: true,
-    default_clippy_severity: LintSeverity::Allow,
-    use_clippy_severity: false,
-    severity: LintSeverity::Warn,
-    group: LintGroup::Restriction,
-    issue: ALLOC_INSTEAD_OF_CORE_ISSUE,
-    applicability: Applicability::MachineApplicable,
-    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
-    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
-    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
-    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
+use crate::{
+    config::Applicability,
+    config::ClippyLevel,
+    config::ClippyLevel::{Expert, Master, Novice},
+    config::ClippyLint,
+    config::LintGroup,
+    config::LintSeverity,
 };
+#[doc = "The lint id"]
+const ID: &str = "alloc_instead_of_core";
 
-#[doc = "clippy alloc instead of core lint for expert"]
-pub const EXPERT_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
-    id: ALLOC_INSTEAD_OF_CORE_ID,
-    description: ALLOC_INSTEAD_OF_CORE_DESCRIPTION,
-    whats_bad: ALLOC_INSTEAD_OF_CORE_WHATS_BAD,
-    known_problems: ALLOC_INSTEAD_OF_CORE_KNOW_PROBLEM,
-    enabled_by_default: true,
-    default_clippy_severity: LintSeverity::Allow,
-    use_clippy_severity: false,
-    severity: LintSeverity::Warn,
-    group: LintGroup::Restriction,
-    issue: ALLOC_INSTEAD_OF_CORE_ISSUE,
-    applicability: Applicability::MachineApplicable,
-    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Warn),
-    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Warn),
-    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
-    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
-};
+#[doc = "The description of the lint"]
+const DESCRIPTION: &str = "Finds items imported through alloc when available through core.";
 
-#[doc = "clippy alloc instead of core lint for master"]
-pub const MASTER_ALLOC_INSTEAD_OF_CORE: ClippyLint = ClippyLint {
-    id: ALLOC_INSTEAD_OF_CORE_ID,
-    description: ALLOC_INSTEAD_OF_CORE_DESCRIPTION,
-    whats_bad: ALLOC_INSTEAD_OF_CORE_WHATS_BAD,
-    known_problems: ALLOC_INSTEAD_OF_CORE_KNOW_PROBLEM,
-    enabled_by_default: true,
-    default_clippy_severity: LintSeverity::Allow,
-    use_clippy_severity: false,
-    severity: LintSeverity::Deny,
-    group: LintGroup::Restriction,
-    issue: ALLOC_INSTEAD_OF_CORE_ISSUE,
-    applicability: Applicability::MachineApplicable,
-    all_increase_config_default_possible_severity: LintSeverity::Increase(&LintSeverity::Deny),
-    all_decrease_config_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Deny),
-    all_increase_clippy_default_possible_severity: LintSeverity::Increase(&LintSeverity::Allow),
-    all_decrease_clippy_default_possible_severity: LintSeverity::Decrease(&LintSeverity::Allow),
-};
+#[doc = "The default clippy lint group"]
+const GROUP: LintGroup = LintGroup::Restriction;
+
+#[doc = "The applicability group"]
+const APPLICABILITY: Applicability = Applicability::MachineApplicable;
+#[doc = "The recommended clippy lint severity"]
+const RECOMMENDED_SEVERITY: LintSeverity = LintSeverity::Allow;
+
+#[doc = "The recommended increase clippy lint severity"]
+const RECOMMENDED_INCREASE_SEVERITY: LintSeverity = LintSeverity::Increase(&RECOMMENDED_SEVERITY);
+#[doc = "The recommended decrease clippy lint severity"]
+const RECOMMENDED_DECREASE_SEVERITY: LintSeverity = LintSeverity::Decrease(&RECOMMENDED_SEVERITY);
+
+#[doc = "The recommended lint severity for novice"]
+const RECOMMENDED_SEVERITY_FOR_NOVICE: LintSeverity = LintSeverity::Warn;
+#[doc = "The recommended lint severity for expert"]
+const RECOMMENDED_SEVERITY_FOR_EXPERT: LintSeverity = LintSeverity::Warn;
+#[doc = "The recommended lint severity for master"]
+const RECOMMENDED_SEVERITY_FOR_MASTER: LintSeverity = LintSeverity::Deny;
+
+#[doc = "The recommended lint increase severity for novice"]
+const RECOMMENDED_INCREASE_SEVERITY_FOR_NOVICE: LintSeverity =
+    LintSeverity::Increase(&RECOMMENDED_SEVERITY_FOR_NOVICE);
+
+#[doc = "The recommended lint decrease severity for novice"]
+const RECOMMENDED_DECREASE_SEVERITY_FOR_NOVICE: LintSeverity =
+    LintSeverity::Decrease(&RECOMMENDED_SEVERITY_FOR_NOVICE);
+
+#[doc = "The recommended lint increase severity for expert"]
+const RECOMMENDED_INCREASE_SEVERITY_FOR_EXPERT: LintSeverity =
+    LintSeverity::Increase(&RECOMMENDED_SEVERITY_FOR_EXPERT);
+
+#[doc = "The recommended lint decrease severity for expert"]
+const RECOMMENDED_DECREASE_SEVERITY_FOR_EXPERT: LintSeverity =
+    LintSeverity::Decrease(&RECOMMENDED_SEVERITY_FOR_EXPERT);
+
+#[doc = "The recommended lint increase severity for master"]
+const RECOMMENDED_INCREASE_SEVERITY_FOR_MASTER: LintSeverity =
+    LintSeverity::Increase(&RECOMMENDED_SEVERITY_FOR_MASTER);
+
+#[doc = "The recommended lint decrease severity for master"]
+const RECOMMENDED_DECREASE_SEVERITY_FOR_MASTER: LintSeverity =
+    LintSeverity::Decrease(&RECOMMENDED_SEVERITY_FOR_MASTER);
+
+#[doc = "The novice lint"]
+pub const NOVICE_ALLOW_INS_OF_CORE_LINT: ClippyLint = lint(&Novice);
+
+#[doc = "The expert lint"]
+pub const EXPERT_ALLOW_INS_OF_CORE_LINT: ClippyLint = lint(&Expert);
+
+#[doc = "The master lint"]
+pub const MASTER_ALLOW_INS_OF_CORE_LINT: ClippyLint = lint(&Master);
+#[doc = "save clippy lint conf"]
+const fn lint(level: &ClippyLevel) -> ClippyLint {
+    match level {
+        Novice => ClippyLint {
+            id: ID,
+            description: DESCRIPTION,
+            severity_by_clippy: RECOMMENDED_SEVERITY,
+            severity_by_config: RECOMMENDED_SEVERITY_FOR_NOVICE,
+            group: GROUP,
+            applicability: APPLICABILITY,
+            increase_config: RECOMMENDED_INCREASE_SEVERITY_FOR_NOVICE,
+            decrease_config: RECOMMENDED_DECREASE_SEVERITY_FOR_NOVICE,
+            increase_clippy: RECOMMENDED_INCREASE_SEVERITY,
+            decrease_clippy: RECOMMENDED_DECREASE_SEVERITY,
+        },
+        Expert => ClippyLint {
+            id: ID,
+            description: DESCRIPTION,
+            severity_by_clippy: RECOMMENDED_SEVERITY,
+            severity_by_config: RECOMMENDED_SEVERITY_FOR_EXPERT,
+            group: GROUP,
+            applicability: APPLICABILITY,
+            increase_config: RECOMMENDED_INCREASE_SEVERITY_FOR_EXPERT,
+            decrease_config: RECOMMENDED_DECREASE_SEVERITY_FOR_EXPERT,
+            increase_clippy: RECOMMENDED_INCREASE_SEVERITY,
+            decrease_clippy: RECOMMENDED_DECREASE_SEVERITY,
+        },
+        Master => ClippyLint {
+            id: ID,
+            description: DESCRIPTION,
+            severity_by_clippy: RECOMMENDED_SEVERITY,
+            severity_by_config: RECOMMENDED_SEVERITY_FOR_MASTER,
+            group: GROUP,
+            applicability: APPLICABILITY,
+            increase_config: RECOMMENDED_INCREASE_SEVERITY_FOR_MASTER,
+            decrease_config: RECOMMENDED_DECREASE_SEVERITY_FOR_MASTER,
+            increase_clippy: RECOMMENDED_INCREASE_SEVERITY,
+            decrease_clippy: RECOMMENDED_DECREASE_SEVERITY,
+        },
+    }
+}
