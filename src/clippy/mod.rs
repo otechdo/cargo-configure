@@ -14,3 +14,5 @@ pub mod allow_attributes_without_reason;
 pub mod almost_complete_range;
 #[doc = "almost_swapped lint"]
 pub mod almost_swapped;
+#[doc = "approx_constant lint"]
+pub mod approx_constant;
