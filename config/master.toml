@@ -22,3 +22,27 @@ severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absurd_extreme_comparisons"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/absurd_extreme_comparisons"
 
+# Checks for attributes that allow lints without a reason.
+[allow_attributes_without_reason]
+group = "restriction"
+applicability = "unspecified"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/allow_attributes_without_reason"
+
+# Checks for usage of the #[allow] attribute and suggests replacing it with the #[expect].
+[allow_attributes]
+group = "restriction"
+applicability = "machine-applicable"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/allow_attributes"
+
+# Checks for ranges which almost include the entire range of letters or digits
+[almost_complete_range]
+group = "suspicious"
+applicability = "maybe-incorrect"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/almost_complete_range"
+
