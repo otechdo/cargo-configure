@@ -235,7 +235,7 @@ use-clippy-severity = false
 #
 # An expression like min <= x may misleadingly imply that it is possible for x to be less than the minimum. Expressions like max < x are probably mistakes.
 #
-# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absurd_extreme_comparisons
 #
 # Clippy decrease possible values : (allow, warn)
 #
@@ -598,31 +598,6 @@ applicability = "unspecified"
 enabled = true
 config-severity = "warn"
 clippy-severity = "allow"
-use-clippy-severity = false
-
-#
-# Lint clippy::bind_instead_of_map
-#
-# Checks for usage of _.and_then(|x| Some(y)), _.and_then(|x| Ok(y)) or _.or_else(|x| Err(y)).
-#
-# This can be written more concisely as _.map(|x| y) or _.map_err(|x| y).
-#
-# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bind_instead_of_map
-#
-# Clippy decrease possible value : allow
-#
-# Clippy increase possible value : deny
-#
-# Default configuration decrease possible value : allow
-#
-# Default configuration increase possible value : deny
-#
-[bind_instead_of_map]
-group = "complexity"
-applicability = "machine-applicable"
-enabled = true
-config-severity = "warn"
-clippy-severity = "warn"
 use-clippy-severity = false
 
 #
