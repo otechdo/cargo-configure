@@ -1,7 +1,7 @@
 #
 # Lint clippy::absolute_paths
 #
-# Checks for usage of items through absolute paths, like std::env::current_dir.
+# Checks for usage of items through absolute paths, like std::env::current_dir
 #
 # Many codebases have their own style when it comes to importing, but one that is seldom used is using absolute paths everywhere.
 # 
@@ -17,6 +17,7 @@
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -42,6 +43,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -67,6 +69,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -92,6 +95,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -106,17 +110,19 @@ use-clippy-severity = false
 #
 # Lint clippy::almost_complete_range
 #
-# Checks for ranges which almost include the entire range of letters from ‘a’ to ‘z’ or digits from ‘0’ to ‘9’, but don’t because they’re a half open range.
+# Checks for ranges which almost include the entire range of letters or digits.
 #
-# This ('a'..'z') is almost certainly a typo meant to include all letters.
+# This is almost certainly a typo meant to include all letters.
 #
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -188,10 +194,12 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arc_with_non_send_sync
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -217,6 +225,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -276,6 +285,7 @@ use-clippy-severity = false
 # Clippy increase possible value none
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -326,7 +336,7 @@ use-clippy-severity = false
 #
 # Checks for assert!(r.is_ok()) or assert!(r.is_err()) calls.
 #
-# This form of assertion does not show any of the information present in the Result other than which variant it isn’t.
+# This form of assertion does not show any of the information present in the Result other than which variant is none
 #
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_result_states
 #
@@ -335,6 +345,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -351,7 +362,7 @@ use-clippy-severity = false
 #
 # Checks for the result of a &self-taking as_ptr being cast to a mutable pointer.
 #
-# Since as_ptr takes a &self, the pointer won’t have write permissions unless interior mutability is used, making it unlikely that having it as a mutable pointer is correct.
+# Since as_ptr takes a &self, the pointer no have write permissions unless interior mutability is used, making it unlikely that having it as a mutable pointer is correct.
 #
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut
 #
@@ -360,6 +371,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -381,6 +393,7 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_constants
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
@@ -406,6 +419,7 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
@@ -435,6 +449,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -460,6 +475,7 @@ use-clippy-severity = false
 # Clippy increase possible value none
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -481,6 +497,7 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_invalid_type
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
@@ -508,6 +525,7 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_lock
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
@@ -533,10 +551,12 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_refcell_ref
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -580,7 +600,7 @@ use-clippy-severity = false
 #
 # Checks for the usage of the to_be_bytes method and/or the function from_be_bytes.
 #
-# To ensure use of little-endian or the target’s endianness rather than big-endian.
+# To ensure use of little-endian or the target endianness rather than big-endian.
 #
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+big_endian_bytes
 #
@@ -589,6 +609,7 @@ use-clippy-severity = false
 # Clippy increase possible values : (warn, deny)
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
@@ -610,6 +631,7 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blanket_clippy_restriction_lints
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
@@ -635,15 +657,44 @@ use-clippy-severity = false
 # Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blocks_in_conditions
 #
 # Clippy decrease possible value : allow
+
 #
 # Clippy increase possible value : deny
 #
 # Default configuration decrease possible value : allow
+
 #
 # Default configuration increase possible value : deny
 #
 [blanket_clippy_restriction_lints]
 group = "style"
+applicability = "machine-applicable"
+enabled = true
+config-severity = "warn"
+clippy-severity = "warn"
+use-clippy-severity = false
+
+#
+# Lint clippy::bool_comparison
+#
+# Checks for expressions of the form x == true, x != true and order comparisons such as x < true (or vice versa) and suggest using the variable directly.
+#
+# Unnecessary code.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bool_comparison
+#
+# Clippy decrease possible value : allow
+
+#
+# Clippy increase possible value : deny
+#
+# Default configuration decrease possible value : allow
+
+#
+# Default configuration increase possible value : deny
+#
+[bool_comparison]
+group = "complexity"
 applicability = "machine-applicable"
 enabled = true
 config-severity = "warn"

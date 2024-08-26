@@ -75,10 +75,13 @@ use crate::clippy::blanket_clippy_restriction_lints::{
 use crate::clippy::blocks_in_conditions::{
     EXPERT_BLOCK_IN_CONDITION, MASTER_BLOCK_IN_CONDITION, NOVICE_BLOCK_IN_CONDITION,
 };
+use crate::clippy::bool_comparison::{
+    EXPERT_BOOL_COMPARISON, MASTER_BOOL_COMPARISON, NOVICE_BOOL_COMPARISON,
+};
 use crate::config::ClippyLint;
 
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 25] = [
+pub const NOVICE_LINTS: [ClippyLint; 26] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -104,10 +107,11 @@ pub const NOVICE_LINTS: [ClippyLint; 25] = [
     NOVICE_BIG_ENDIAN_BYTES,
     NOVICE_BLANKET_CLIPPY_RESTRICTION_LINTS,
     NOVICE_BLOCK_IN_CONDITION,
+    NOVICE_BOOL_COMPARISON,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 25] = [
+pub const EXPERT_LINTS: [ClippyLint; 26] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -133,10 +137,11 @@ pub const EXPERT_LINTS: [ClippyLint; 25] = [
     EXPERT_BIG_ENDIAN_BYTES,
     EXPERT_BLANKET_CLIPPY_RESTRICTION_LINTS,
     EXPERT_BLOCK_IN_CONDITION,
+    EXPERT_BOOL_COMPARISON,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 25] = [
+pub const MASTER_LINTS: [ClippyLint; 26] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -162,4 +167,5 @@ pub const MASTER_LINTS: [ClippyLint; 25] = [
     MASTER_BIG_ENDIAN_BYTES,
     MASTER_BLANKET_CLIPPY_RESTRICTION_LINTS,
     MASTER_BLOCK_IN_CONDITION,
+    MASTER_BOOL_COMPARISON,
 ];
