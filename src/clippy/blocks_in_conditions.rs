@@ -1,5 +1,4 @@
 use crate::config::{Applicability, ClippyLint, LintGroup, LintSeverity};
-
 #[doc = "The blanket_clippy_restriction_lints id"]
 pub const BLOCK_IN_CONDITION_ID: &str = "blanket_clippy_restriction_lints";
 #[doc = "The blanket_clippy_restriction_lints description"]

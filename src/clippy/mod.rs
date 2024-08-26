@@ -75,3 +75,5 @@ pub mod blanket_clippy_restriction_lints;
 
 #[doc = "The blocks_in_conditions clippy lint"]
 pub mod blocks_in_conditions;
+#[doc = "The bool_comparison clippy lint"]
+pub mod bool_comparison;
