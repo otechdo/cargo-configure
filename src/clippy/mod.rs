@@ -16,3 +16,5 @@ pub mod almost_complete_range;
 pub mod almost_swapped;
 #[doc = "approx_constant lint"]
 pub mod approx_constant;
+#[doc = "arc_with_non_send_sync lint"]
+pub mod arc_with_non_send_sync;

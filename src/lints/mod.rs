@@ -22,10 +22,14 @@ use crate::clippy::almost_complete_range::{
 use crate::clippy::approx_constant::{
     EXPERT_APPROX_CONSTANT_LINT, MASTER_APPROX_CONSTANT_LINT, NOVICE_APPROX_CONSTANT_LINT,
 };
+use crate::clippy::arc_with_non_send_sync::{
+    EXPERT_ARC_WITH_NO_SEND_SYNC_LINT, MASTER_ARC_WITH_NO_SEND_SYNC_LINT,
+    NOVICE_ARC_WITH_NO_SEND_SYNC_LINT,
+};
 use crate::config::ClippyLint;
 
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 7] = [
+pub const NOVICE_LINTS: [ClippyLint; 8] = [
     NOVICE_ABSOLUTE_PATH_LINT,
     NOVICE_ALLOW_INS_OF_CORE_LINT,
     NOVICE_ABSURD_EXTREME_COMPARISON_LINT,
@@ -33,10 +37,11 @@ pub const NOVICE_LINTS: [ClippyLint; 7] = [
     NOVICE_ALLOW_ATTRIBUTE_LINT,
     NOVICE_ALMOST_COMPLETE_RANGE_LINT,
     NOVICE_APPROX_CONSTANT_LINT,
+    NOVICE_ARC_WITH_NO_SEND_SYNC_LINT,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 7] = [
+pub const EXPERT_LINTS: [ClippyLint; 8] = [
     EXPERT_ABSOLUTE_PATH_LINT,
     EXPERT_ALLOW_INS_OF_CORE_LINT,
     EXPERT_ABSURD_EXTREME_COMPARISON_LINT,
@@ -44,10 +49,11 @@ pub const EXPERT_LINTS: [ClippyLint; 7] = [
     EXPERT_ALLOW_ATTRIBUTE_LINT,
     EXPERT_ALMOST_COMPLETE_RANGE_LINT,
     EXPERT_APPROX_CONSTANT_LINT,
+    EXPERT_ARC_WITH_NO_SEND_SYNC_LINT,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 7] = [
+pub const MASTER_LINTS: [ClippyLint; 8] = [
     MASTER_ABSOLUTE_PATH_LINT,
     MASTER_ALLOW_INS_OF_CORE_LINT,
     MASTER_ABSURD_EXTREME_COMPARISON_LINT,
@@ -55,4 +61,5 @@ pub const MASTER_LINTS: [ClippyLint; 7] = [
     MASTER_ALLOW_ATTRIBUTE_LINT,
     MASTER_ALMOST_COMPLETE_RANGE_LINT,
     MASTER_APPROX_CONSTANT_LINT,
+    MASTER_ARC_WITH_NO_SEND_SYNC_LINT,
 ];

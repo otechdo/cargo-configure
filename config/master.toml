@@ -54,3 +54,11 @@ severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+approx_constant"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/approx_constant"
 
+# This lint warns when you use Arc with a type that does not implement Send or Sync.
+[arc_with_non_send_sync]
+group = "suspicious"
+applicability = "unspecified"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arc_with_non_send_sync"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/arc_with_non_send_sync"
+
