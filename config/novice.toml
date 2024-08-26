@@ -625,3 +625,28 @@ config-severity = "warn"
 clippy-severity = "warn"
 use-clippy-severity = false
 
+#
+# Lint clippy::blanket_clippy_restriction_lints
+#
+# Checks for if and match conditions that use blocks containing an expression, statements or conditions that use closures with blocks.
+#
+# Style, using blocks in the condition makes it hard to read.
+#
+# Issue : https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blocks_in_conditions
+#
+# Clippy decrease possible value : allow
+#
+# Clippy increase possible value : deny
+#
+# Default configuration decrease possible value : allow
+#
+# Default configuration increase possible value : deny
+#
+[blanket_clippy_restriction_lints]
+group = "style"
+applicability = "machine-applicable"
+enabled = true
+config-severity = "warn"
+clippy-severity = "warn"
+use-clippy-severity = false
+

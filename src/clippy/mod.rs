@@ -75,3 +75,6 @@ pub mod bind_instead_of_map;
 
 #[doc = "The blanket_clippy_restriction_lints clippy lint"]
 pub mod blanket_clippy_restriction_lints;
+
+#[doc = "The blocks_in_conditions clippy lint"]
+pub mod blocks_in_conditions;

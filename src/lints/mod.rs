@@ -22,10 +22,11 @@ use crate::clippy::await_holding_refcell_ref::{EXPERT_AWAIT_HOLDING_REFCELL_REF,
 use crate::clippy::bad_bit_mask::{EXPERT_BAD_BIT_MASK, MASTER_BAD_BIT_MASK, NOVICE_BAD_BIT_MASK};
 use crate::clippy::big_endian_bytes::{EXPERT_BIG_ENDIAN_BYTES, MASTER_BIG_ENDIAN_BYTES, NOVICE_BIG_ENDIAN_BYTES};
 use crate::clippy::blanket_clippy_restriction_lints::{EXPERT_BLANKET_CLIPPY_RESTRICTION_LINTS, MASTER_BLANKET_CLIPPY_RESTRICTION_LINTS, NOVICE_BLANKET_CLIPPY_RESTRICTION_LINTS};
+use crate::clippy::blocks_in_conditions::{EXPERT_BLOCK_IN_CONDITION, MASTER_BLOCK_IN_CONDITION, NOVICE_BLOCK_IN_CONDITION};
 use crate::clippy::core::ClippyLint;
 
 #[doc = "All lints for novice"]
-pub const NOVICE_LINTS: [ClippyLint; 24] = [
+pub const NOVICE_LINTS: [ClippyLint; 25] = [
     NOVICE_ABSOLUTE_PATH,
     NOVICE_ALLOC_INSTEAD_OF_CORE,
     NOVICE_ALLOW_ATTRIBUTE,
@@ -50,10 +51,11 @@ pub const NOVICE_LINTS: [ClippyLint; 24] = [
     NOVICE_BAD_BIT_MASK,
     NOVICE_BIG_ENDIAN_BYTES,
     NOVICE_BLANKET_CLIPPY_RESTRICTION_LINTS,
+    NOVICE_BLOCK_IN_CONDITION,
 ];
 
 #[doc = "All lints for expert"]
-pub const EXPERT_LINTS: [ClippyLint; 24] = [
+pub const EXPERT_LINTS: [ClippyLint; 25] = [
     EXPERT_ABSOLUTE_PATH,
     EXPERT_ALLOC_INSTEAD_OF_CORE,
     EXPERT_ALLOW_ATTRIBUTE,
@@ -78,10 +80,11 @@ pub const EXPERT_LINTS: [ClippyLint; 24] = [
     EXPERT_BAD_BIT_MASK,
     EXPERT_BIG_ENDIAN_BYTES,
     EXPERT_BLANKET_CLIPPY_RESTRICTION_LINTS,
+    EXPERT_BLOCK_IN_CONDITION,
 ];
 
 #[doc = "All lints for master"]
-pub const MASTER_LINTS: [ClippyLint; 24] = [
+pub const MASTER_LINTS: [ClippyLint; 25] = [
     MASTER_ABSOLUTE_PATH,
     MASTER_ALLOC_INSTEAD_OF_CORE,
     MASTER_ALLOW_ATTRIBUTE,
@@ -106,4 +109,5 @@ pub const MASTER_LINTS: [ClippyLint; 24] = [
     MASTER_BAD_BIT_MASK,
     MASTER_BIG_ENDIAN_BYTES,
     MASTER_BLANKET_CLIPPY_RESTRICTION_LINTS,
+    MASTER_BLOCK_IN_CONDITION,
 ];
