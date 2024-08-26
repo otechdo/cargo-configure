@@ -1,3 +1,4 @@
+# Checks for usage of items through absolute paths, like std::env::current_dir.
 [absolute_paths]
 group = "restriction"
 applicability = "unspecified"
@@ -5,10 +6,19 @@ severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absolute_paths"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/absolute_paths"
 
+# Finds items imported through alloc when available through core.
 [alloc_instead_of_core]
 group = "restriction"
 applicability = "machine-applicable"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+alloc_instead_of_core"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/alloc_instead_of_core"
+
+# Checks for comparisons where one side of the relation is either the minimum or maximum value for its type and warns if it involves a case that is always true or always false. Only integer and boolean types are checked.
+[absurd_extreme_comparisons]
+group = "correctness"
+applicability = "unspecified"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absurd_extreme_comparisons"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/absurd_extreme_comparisons"
 

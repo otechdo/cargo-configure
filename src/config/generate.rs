@@ -50,6 +50,7 @@ pub fn generate(filename: &str, lints: &[ClippyLint]) -> Result<(), std::io::Err
     let mut file = File::create(file_path)?;
 
     for lint in lints {
+        writeln!(file, "# {}", lint.description)?;
         writeln!(file, "[{}]", lint.id)?;
         writeln!(file, "group = \"{}\"", lint.group)?;
         writeln!(file, "applicability = \"{}\"", lint.applicability)?;
