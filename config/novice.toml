@@ -64,3 +64,11 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arc_with_non_send_sync"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/arc_with_non_send_sync"
+# Checks any kind of arithmetic operation of any type.
+[arithmetic_side_effects]
+group = "restriction"
+applicability = "unspecified"
+# none < allow > warn deny
+severity = "allow"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/arithmetic_side_effects"

@@ -89,3 +89,14 @@ pub const ARC_WITH_NO_SEND_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Suspicious,
     Applicability::Unspecified,
 );
+
+#[doc = "arithmetic_side_effects lint for all"]
+pub const ARITMETIC_SIDE_EFFECTS_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "arithmetic_side_effects",
+    "Checks any kind of arithmetic operation of any type.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::Unspecified,
+);
