@@ -39,7 +39,7 @@ impl<'a> Display for Severity<'a> {
             Self::Decrease(inner) => match inner {
                 Self::Allow => write!(f, "none"),
                 Self::Deny => write!(f, "allow warn"),
-                Self::Warn | Self::Increase(_) | Self::Decrease(_) => writeln!(f, "allow"),
+                Self::Warn | Self::Increase(_) | Self::Decrease(_) => write!(f, "allow"),
             },
         }
     }

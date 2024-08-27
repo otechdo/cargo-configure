@@ -6,3 +6,11 @@ applicability = "unspecified"
 severity = "allow"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+absolute_paths"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/absolute_paths"
+# Checks for code like foo = bar.clone();
+[assigning_clones]
+group = "pedantic"
+applicability = "unspecified"
+# allow < warn > deny
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assigning_clones"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/assigning_clones"
