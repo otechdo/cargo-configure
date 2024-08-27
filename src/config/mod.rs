@@ -116,6 +116,8 @@ pub enum Applicability {
     MachineApplicable,
     #[doc = "The lint might indicate a potential correctness issue in the code."]
     MaybeIncorrect,
+    #[doc = "The suggestion cannot be applied automatically because it will not result in valid Rust code. The user will need to fill in the placeholders."]
+    HasPlaceholders,
 }
 
 impl Display for Applicability {
@@ -127,6 +129,7 @@ impl Display for Applicability {
             Self::Deprecated => write!(f, "deprecated"),
             Self::MachineApplicable => write!(f, "machine-applicable"),
             Self::MaybeIncorrect => write!(f, "maybe-incorrect"),
+            Self::HasPlaceholders => write!(f, "has-placeholders"),
         }
     }
 }

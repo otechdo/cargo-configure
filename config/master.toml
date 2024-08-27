@@ -86,3 +86,19 @@ severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_underscore"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/as_underscore"
 
+# Checks for reference-counted pointers (Arc, Rc, rc::Weak, and sync::Weak) in vec![elem; len]
+[rc_clone_in_vec_init]
+group = "suspicious"
+applicability = "has-placeholders"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+rc_clone_in_vec_init"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/rc_clone_in_vec_init"
+
+# Checks for code like foo = bar.clone();
+[assigning_clones]
+group = "pedantic"
+applicability = "unspecified"
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assigning_clones"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/assigning_clones"
+

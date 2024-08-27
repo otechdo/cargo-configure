@@ -33,3 +33,9 @@ pub mod as_conversions;
 
 #[doc = "as_underscore lint"]
 pub mod as_underscore;
+
+#[doc = "assigning_clones lint"]
+pub mod assigning_clones;
+
+#[doc = "rc_clone_in_vec_init lint"]
+pub mod rc_clone_in_vec_init;
