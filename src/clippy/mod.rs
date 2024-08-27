@@ -66,6 +66,7 @@ Checks for if and match conditions that use blocks containing an expression, sta
     ClippyGroup::Style,
     Applicability::MachineApplicable,
 );
+
 #[doc = "The approx_constant lint for all"]
 pub const APPROX_CONSTANT_LINTS: (Lint, Lint, Lint) = Lint::new(
     "approx_constant",
@@ -75,5 +76,16 @@ Checks for floating point literals that approximate constants which are defined 
     &Severity::Deny,
     &Severity::Deny,
     ClippyGroup::Correctness,
+    Applicability::Unspecified,
+);
+
+#[doc = "arc_with_non_send_sync lint for all"]
+pub const ARC_WITH_NO_SEND_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "arc_with_non_send_sync",
+    "This lint warns when you use Arc with a type that does not implement Send or Sync.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Suspicious,
     Applicability::Unspecified,
 );
