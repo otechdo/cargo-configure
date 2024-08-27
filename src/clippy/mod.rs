@@ -122,3 +122,14 @@ pub const AS_UNDERSCORE_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Restriction,
     Applicability::MachineApplicable,
 );
+
+#[doc = "as_ptr_cast_mut lint for all"]
+pub const AS_PTR_CAST_MUT_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "as_ptr_cast_mut",
+    "Checks for the result of a &self-taking as_ptr being cast to a mutable pointer.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Nursery,
+    Applicability::MaybeIncorrect,
+);

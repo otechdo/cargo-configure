@@ -88,3 +88,11 @@ applicability = "unspecified"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_conversions"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/as_conversions"
+# Checks for the result of a &self-taking as_ptr being cast to a mutable pointer.
+[as_ptr_cast_mut]
+group = "nursery"
+applicability = "maybe-incorrect"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/as_ptr_cast_mut"
