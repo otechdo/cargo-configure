@@ -72,7 +72,7 @@ applicability = "unspecified"
 severity = "allow"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+arithmetic_side_effects"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/arithmetic_side_effects"
-# Checks for usage of as conversions.
+# Checks for usage of as underscore.
 [as_underscore]
 group = "restriction"
 applicability = "machine-applicable"

@@ -115,7 +115,7 @@ pub const AS_CONVERSIONS_LINTS: (Lint, Lint, Lint) = Lint::new(
 #[doc = "arithmetic_side_effects lint for all"]
 pub const AS_UNDERSCORE_LINTS: (Lint, Lint, Lint) = Lint::new(
     "as_underscore",
-    "Checks for usage of as conversions.",
+    "Checks for usage of as underscore.",
     &Severity::Warn,
     &Severity::Warn,
     &Severity::Deny,
