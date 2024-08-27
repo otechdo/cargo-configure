@@ -31,3 +31,11 @@ applicability = "unspecified"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/allow_attributes_without_reason"
+# Checks for ranges which almost include the entire range of letters or digits.
+[almost_complete_range]
+group = "restriction"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/almost_complete_range"

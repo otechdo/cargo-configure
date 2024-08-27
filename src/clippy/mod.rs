@@ -9,3 +9,6 @@ pub mod blocks_in_conditions;
 
 #[doc = "allow_attributes_without_reason lints"]
 pub mod allow_attributes_without_reason;
+
+#[doc = "almost_complete_range lints"]
+pub mod almost_complete_range;
