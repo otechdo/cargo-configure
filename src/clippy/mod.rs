@@ -100,3 +100,25 @@ pub const ARITMETIC_SIDE_EFFECTS_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Restriction,
     Applicability::Unspecified,
 );
+
+#[doc = "as_conversions lint for all"]
+pub const AS_CONVERSIONS_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "as_conversions",
+    "Checks for usage of as conversions.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::Unspecified,
+);
+
+#[doc = "arithmetic_side_effects lint for all"]
+pub const AS_UNDERSCORE_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "as_underscore",
+    "Checks for usage of as conversions.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::MachineApplicable,
+);
