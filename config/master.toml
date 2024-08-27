@@ -23,3 +23,11 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blocks_in_conditions"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/blocks_in_conditions"
+# Checks for attributes that allow lints without a reason.
+[allow_attributes_without_reason]
+group = "restriction"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+allow_attributes_without_reason"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/allow_attributes_without_reason"
