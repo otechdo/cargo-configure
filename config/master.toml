@@ -14,3 +14,12 @@ applicability = "unspecified"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assigning_clones"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/assigning_clones"
+# 
+Checks for if and match conditions that use blocks containing an expression, statements or conditions that use closures with blocks.
+[blocks_in_conditions]
+group = "style"
+applicability = "machine-applicable"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blocks_in_conditions"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/blocks_in_conditions"
