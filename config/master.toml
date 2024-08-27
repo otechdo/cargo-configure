@@ -96,3 +96,11 @@ applicability = "maybe-incorrect"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+as_ptr_cast_mut"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/as_ptr_cast_mut"
+# Checks for assert!(true) and assert!(false) calls.
+[assertions_on_constants]
+group = "style"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_constants"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/assertions_on_constants"

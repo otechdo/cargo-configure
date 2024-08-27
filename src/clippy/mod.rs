@@ -133,3 +133,14 @@ pub const AS_PTR_CAST_MUT_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Nursery,
     Applicability::MaybeIncorrect,
 );
+
+#[doc = "assertions_on_constants lint for all"]
+pub const ASSERTIONS_ON_CONSTANTS_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "assertions_on_constants",
+    "Checks for assert!(true) and assert!(false) calls.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Style,
+    Applicability::Unspecified,
+);
