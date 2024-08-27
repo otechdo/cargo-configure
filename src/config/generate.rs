@@ -1,4 +1,4 @@
-use crate::config::{ClippyLint, DOC_BASE_LINK, ISSUE_BASE_LINK};
+use crate::config::{Lint, DOC_BASE_LINK, ISSUE_BASE_LINK};
 use crate::lints::{EXPERT_LINTS, MASTER_LINTS, NOVICE_LINTS};
 use std::fs::{create_dir_all, File};
 use std::io::Write;
@@ -45,7 +45,7 @@ pub fn configure() -> Result<(), std::io::Error> {
 /// Exit failure without write mode on the current directory
 ///
 #[doc = "Generates a single configuration file."]
-pub fn generate(filename: &str, lints: &[ClippyLint]) -> Result<(), std::io::Error> {
+pub fn generate(filename: &str, lints: &[Lint]) -> Result<(), std::io::Error> {
     let file_path = Path::new(CONFIG_DIRECTORY).join(filename);
     let mut file = File::create(file_path)?;
 
@@ -54,9 +54,13 @@ pub fn generate(filename: &str, lints: &[ClippyLint]) -> Result<(), std::io::Err
         writeln!(file, "[{}]", lint.id)?;
         writeln!(file, "group = \"{}\"", lint.group)?;
         writeln!(file, "applicability = \"{}\"", lint.applicability)?;
-        writeln!(file, "severity = \"{}\"", lint.severity_by_config)?;
+        writeln!(
+            file,
+            "# {} < {} > {}\nseverity = \"{}\"",
+            lint.decrease, lint.severity, lint.increase, lint.severity
+        )?;
         writeln!(file, "issue = \"{ISSUE_BASE_LINK}+{}\"", lint.id)?;
-        writeln!(file, "info = \"{DOC_BASE_LINK}/{}\"\n", lint.id)?;
+        writeln!(file, "info = \"{DOC_BASE_LINK}/{}\"", lint.id)?;
     }
     Ok(())
 }

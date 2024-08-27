@@ -4,30 +4,13 @@ use std::fmt::{Display, Formatter};
 
 #[doc = "the base uri for doc link"]
 pub const DOC_BASE_LINK: &str = "https://rust-lang.github.io/rust-clippy/master/index.html#";
+
 #[doc = "The base uri for issue link"]
 pub const ISSUE_BASE_LINK: &str = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue";
-#[doc = "All developer level"]
-#[derive(Copy, Clone)]
-pub enum ClippyLevel {
-    #[doc = "It focuses on essential lints that catch common mistakes and promote basic best practice"]
-    Novice,
-    #[doc = "It includes a broader set of lints, covering style, performance, and potential correctness issues"]
-    Expert,
-    #[doc = "It focus on enforcing strict coding practices and ensuring optimal code performance and correctness high level"]
-    Master,
-}
-impl Display for ClippyLevel {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        match self {
-            Self::Novice => write!(f, "Novice"),
-            Self::Expert => write!(f, "Expert"),
-            Self::Master => write!(f, "Master"),
-        }
-    }
-}
+
 #[doc = "All severity level"]
 #[derive(Copy, Clone)]
-pub enum LintSeverity<'a> {
+pub enum Severity<'a> {
     #[doc = "Set clippy lint to allow"]
     Allow,
     #[doc = "Set clippy lint to warn"]
@@ -40,23 +23,23 @@ pub enum LintSeverity<'a> {
     Decrease(&'a Self),
 }
 
-impl<'a> Display for LintSeverity<'a> {
+impl<'a> Display for Severity<'a> {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Allow => write!(f, "allow"),
             Self::Warn => write!(f, "warn"),
             Self::Deny => write!(f, "deny"),
             Self::Increase(inner) => match inner {
-                Self::Allow => write!(f, "values : (warn, deny)"),
-                Self::Deny => write!(f, "value none"),
-                Self::Warn | LintSeverity::Increase(_) | LintSeverity::Decrease(_) => {
-                    write!(f, "value : deny")
+                Self::Allow => write!(f, "warn deny"),
+                Self::Deny => write!(f, "none"),
+                Self::Warn | Self::Increase(_) | Self::Decrease(_) => {
+                    write!(f, "deny")
                 }
             },
-            LintSeverity::Decrease(inner) => match inner {
-                Self::Allow => write!(f, "value none"),
-                Self::Deny => write!(f, "values : (allow, warn)"),
-                Self::Warn | Self::Increase(_) | Self::Decrease(_) => writeln!(f, "value : allow"),
+            Self::Decrease(inner) => match inner {
+                Self::Allow => write!(f, "none"),
+                Self::Deny => write!(f, "allow warn"),
+                Self::Warn | Self::Increase(_) | Self::Decrease(_) => writeln!(f, "allow"),
             },
         }
     }
@@ -64,7 +47,7 @@ impl<'a> Display for LintSeverity<'a> {
 
 #[doc = "All clippy lint group"]
 #[derive(Copy, Clone)]
-pub enum LintGroup {
+pub enum ClippyGroup {
     #[doc = "Lints related to code style and formatting."]
     Style,
     #[doc = "Lints that detect potential correctness issues, such as logic errors or incorrect usage of language features."]
@@ -85,7 +68,7 @@ pub enum LintGroup {
     Perf,
 }
 
-impl Display for LintGroup {
+impl Display for ClippyGroup {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::Style => write!(f, "style"),
@@ -134,26 +117,64 @@ impl Display for Applicability {
     }
 }
 
-#[doc = "Represent a configuration for a lint"]
-pub struct ClippyLint<'a> {
+#[doc = "Represent a configuration for a lint by generate tool"]
+pub struct Lint<'a> {
     #[doc = "The lint id"]
     pub id: &'static str,
     #[doc = "The lint description"]
     pub description: &'static str,
     #[doc = "Set lint severity can be allow, warn, deny based on clippy"]
-    pub severity_by_clippy: LintSeverity<'a>,
-    #[doc = "Set the config severity to allow or warn or deny"]
-    pub severity_by_config: LintSeverity<'a>,
+    pub severity: Severity<'a>,
     #[doc = "Set the lint group"]
-    pub group: LintGroup,
+    pub group: ClippyGroup,
     #[doc = "Set the applicability value"]
     pub applicability: Applicability,
-    #[doc = "Set all values possible to increase the default config value"]
-    pub increase_config: LintSeverity<'a>,
-    #[doc = "Set all values possible to decrease the default config value"]
-    pub decrease_config: LintSeverity<'a>,
-    #[doc = "Set all values possible to increase the default clippy value"]
-    pub increase_clippy: LintSeverity<'a>,
-    #[doc = "Set all values possible to decrease the default clippy value"]
-    pub decrease_clippy: LintSeverity<'a>,
+    #[doc = "Set all values possible to increase the severity value"]
+    pub increase: Severity<'a>,
+    #[doc = "Set all values possible to decrease the severity value"]
+    pub decrease: Severity<'a>,
+}
+
+impl<'a> Lint<'a> {
+    #[must_use]
+    #[doc = "generate lints"]
+    pub const fn new(
+        id: &'static str,
+        description: &'static str,
+        novice: &'a Severity<'a>,
+        expert: &'a Severity<'a>,
+        master: &'a Severity<'a>,
+        group: ClippyGroup,
+        applicability: Applicability,
+    ) -> (Self, Self, Self) {
+        (
+            Self {
+                id,
+                description,
+                severity: *novice,
+                group,
+                applicability,
+                increase: Severity::Increase(novice),
+                decrease: Severity::Decrease(novice),
+            },
+            Self {
+                id,
+                description,
+                severity: *expert,
+                group,
+                applicability,
+                increase: Severity::Increase(expert),
+                decrease: Severity::Decrease(expert),
+            },
+            Self {
+                id,
+                description,
+                severity: *master,
+                group,
+                applicability,
+                increase: Severity::Increase(master),
+                decrease: Severity::Decrease(master),
+            },
+        )
+    }
 }
