@@ -39,3 +39,11 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_complete_range"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/almost_complete_range"
+# Checks for foo = bar; bar = foo sequences.
+[almost_swaped]
+group = "style"
+applicability = "machine-applicable"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swaped"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/almost_swaped"
