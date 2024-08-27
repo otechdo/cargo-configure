@@ -144,3 +144,14 @@ pub const ASSERTIONS_ON_CONSTANTS_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Style,
     Applicability::Unspecified,
 );
+
+#[doc = "await_holding_lock lint for all"]
+pub const AWAIT_HOLDING_LOCK_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "await_holding_lock",
+    "Checks for calls to await while holding a non-async-aware MutexGuard.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Suspicious,
+    Applicability::Unspecified,
+);

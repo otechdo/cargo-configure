@@ -104,3 +104,11 @@ applicability = "unspecified"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assertions_on_constants"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/assertions_on_constants"
+# Checks for calls to await while holding a non-async-aware MutexGuard.
+[await_holding_lock]
+group = "suspicious"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_lock"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/await_holding_lock"
