@@ -152,3 +152,11 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+let_and_return"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/let_and_return"
+# Checks for Mutex::lock calls in if let expression with lock calls in any of the else blocks.
+[if_let_mutex]
+group = "correctness"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+if_let_mutex"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/if_let_mutex"

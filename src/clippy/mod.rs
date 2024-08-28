@@ -209,3 +209,14 @@ pub const LET_AND_RETURN_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Restriction,
     Applicability::Unspecified,
 );
+
+#[doc = "if_let_mutex lint for all"]
+pub const IF_LET_MUTEX_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "if_let_mutex",
+    "Checks for Mutex::lock calls in if let expression with lock calls in any of the else blocks.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Correctness,
+    Applicability::Unspecified,
+);
