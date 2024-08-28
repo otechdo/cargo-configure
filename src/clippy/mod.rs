@@ -341,3 +341,14 @@ pub const BORROW_DEREF_REF_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Complexity,
     Applicability::Unspecified,
 );
+
+#[doc = "box_collection lint for all"]
+pub const BOX_COLLECTION_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "box_collection",
+    "Checks for usage of Box<T> where T is a collection such as Vec anywhere in the code. Check the Box documentation for more information.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Perf,
+    Applicability::Unspecified,
+);

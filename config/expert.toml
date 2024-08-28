@@ -216,6 +216,14 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrowed_box"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrowed_box"
+# Checks for usage of Box<T> where T is a collection such as Vec anywhere in the code. Check the Box documentation for more information.
+[box_collection]
+group = "perf"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+box_collection"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/box_collection"
 # Checks for Mutex::lock calls in if let expression with lock calls in any of the else blocks.
 [if_let_mutex]
 group = "correctness"
