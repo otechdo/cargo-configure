@@ -177,3 +177,14 @@ pub const ASSIGN_OP_PATTERN_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Style,
     Applicability::MachineApplicable,
 );
+
+#[doc = "assigning_clones lint for all"]
+pub const ASYNC_YIELDS_ASYNC_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "async_yields_async",
+    "Checks for async blocks that yield values of types that can themselves be awaited.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Correctness,
+    Applicability::MaybeIncorrect,
+);

@@ -128,3 +128,11 @@ applicability = "machine-applicable"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/assign_op_pattern"
+# Checks for async blocks that yield values of types that can themselves be awaited.
+[async_yields_async]
+group = "correctness"
+applicability = "maybe-incorrect"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+async_yields_async"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/async_yields_async"
