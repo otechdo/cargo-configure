@@ -220,3 +220,14 @@ pub const IF_LET_MUTEX_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Correctness,
     Applicability::Unspecified,
 );
+
+#[doc = "let_with_type_underscore lint for all"]
+pub const LET_WITH_TYPE_UNDERSCORE_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "let_with_type_underscore",
+    "Detects when a variable is declared with an explicit type of _.",
+    &Severity::Warn,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Correctness,
+    Applicability::Unspecified,
+);
