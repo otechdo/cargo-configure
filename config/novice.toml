@@ -120,3 +120,11 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_invalid_type"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/await_holding_invalid_type"
+# Checks for a = a op b or a = b commutative_op a patterns.
+[assign_op_pattern]
+group = "style"
+applicability = "machine-applicable"
+# allow < warn > deny
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+assign_op_pattern"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/assign_op_pattern"

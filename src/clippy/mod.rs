@@ -166,3 +166,14 @@ pub const AWAIT_HOLDING_INVALID_TYPE_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Suspicious,
     Applicability::Unspecified,
 );
+
+#[doc = "assigning_clones lint for all"]
+pub const ASSIGN_OP_PATTERN_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "assign_op_pattern",
+    "Checks for a = a op b or a = b commutative_op a patterns.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Style,
+    Applicability::MachineApplicable,
+);
