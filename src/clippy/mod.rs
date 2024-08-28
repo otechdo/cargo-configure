@@ -231,3 +231,14 @@ pub const LET_WITH_TYPE_UNDERSCORE_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Correctness,
     Applicability::Unspecified,
 );
+
+#[doc = "let_underscore_untyped lint for all"]
+pub const LET_UNDERSCORE_UNTYPED_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "let_underscore_untyped",
+    "Detects when a variable is declared with an explicit type of _.",
+    &Severity::Warn,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Correctness,
+    Applicability::Unspecified,
+);

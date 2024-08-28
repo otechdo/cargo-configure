@@ -168,3 +168,11 @@ applicability = "unspecified"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+let_with_type_underscore"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/let_with_type_underscore"
+# Detects when a variable is declared with an explicit type of _.
+[let_underscore_untyped]
+group = "correctness"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+let_underscore_untyped"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/let_underscore_untyped"
