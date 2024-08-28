@@ -28,12 +28,12 @@ pub const CONFIG_DIRECTORY: &str = "config";
 #[doc = "Generates configuration files based on skill levels"]
 pub fn configure() -> Result<(), std::io::Error> {
     create_dir_all(CONFIG_DIRECTORY)?;
-    let novice_lints = NOVICE_LINTS;
-    let expert_lints = EXPERT_LINTS;
-    let master_lints = MASTER_LINTS;
-    generate(NOVICE_CONFIGURATION_FILENAME, &novice_lints)?;
-    generate(EXPERT_CONFIGURATION_FILENAME, &expert_lints)?;
-    generate(MASTER_CONFIGURATION_FILENAME, &master_lints)?;
+    let mut novice_lints = NOVICE_LINTS;
+    let mut expert_lints = EXPERT_LINTS;
+    let mut master_lints = MASTER_LINTS;
+    generate(NOVICE_CONFIGURATION_FILENAME, &mut novice_lints)?;
+    generate(EXPERT_CONFIGURATION_FILENAME, &mut expert_lints)?;
+    generate(MASTER_CONFIGURATION_FILENAME, &mut master_lints)?;
 
     Ok(())
 }
@@ -45,10 +45,10 @@ pub fn configure() -> Result<(), std::io::Error> {
 /// Exit failure without write mode on the current directory
 ///
 #[doc = "Generates a single configuration file."]
-pub fn generate(filename: &str, lints: &[Lint]) -> Result<(), std::io::Error> {
+pub fn generate(filename: &str, lints: &mut [Lint]) -> Result<(), std::io::Error> {
     let file_path = Path::new(CONFIG_DIRECTORY).join(filename);
     let mut file = File::create(file_path)?;
-
+    lints.sort();
     for lint in lints {
         writeln!(file, "# {}", lint.description)?;
         writeln!(file, "[{}]", lint.id)?;

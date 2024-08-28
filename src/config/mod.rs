@@ -9,7 +9,7 @@ pub const DOC_BASE_LINK: &str = "https://rust-lang.github.io/rust-clippy/master/
 pub const ISSUE_BASE_LINK: &str = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue";
 
 #[doc = "All severity level"]
-#[derive(Copy, Clone)]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub enum Severity<'a> {
     #[doc = "Set clippy lint to allow"]
     Allow,
@@ -46,7 +46,7 @@ impl<'a> Display for Severity<'a> {
 }
 
 #[doc = "All clippy lint group"]
-#[derive(Copy, Clone)]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub enum ClippyGroup {
     #[doc = "Lints related to code style and formatting."]
     Style,
@@ -85,7 +85,7 @@ impl Display for ClippyGroup {
 }
 
 #[doc = "All clippy applicability"]
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub enum Applicability {
     #[doc = "The applicability of the lint is not fully specified or understood."]
     Unspecified,
@@ -118,6 +118,7 @@ impl Display for Applicability {
 }
 
 #[doc = "Represent a configuration for a lint by generate tool"]
+#[derive(PartialEq, Eq, PartialOrd, Ord)]
 pub struct Lint<'a> {
     #[doc = "The lint id"]
     pub id: &'static str,
