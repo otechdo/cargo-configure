@@ -242,3 +242,14 @@ pub const LET_UNDERSCORE_UNTYPED_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Correctness,
     Applicability::Unspecified,
 );
+
+#[doc = "bool_to_int_with_if lint for all"]
+pub const BOOL_TO_INT_WITH_IF_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "bool_to_int_with_if",
+    "Instead of using an if statement to convert a bool to an int, this lint suggests using a from() function or an as coercion.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Pedantic,
+    Applicability::MaybeIncorrect,
+);

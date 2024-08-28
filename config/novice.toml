@@ -176,3 +176,11 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+let_underscore_untyped"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/let_underscore_untyped"
+# Instead of using an if statement to convert a bool to an int, this lint suggests using a from() function or an as coercion.
+[bool_to_int_with_if]
+group = "pedantic"
+applicability = "maybe-incorrect"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bool_to_int_with_if"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/bool_to_int_with_if"
