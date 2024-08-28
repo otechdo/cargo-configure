@@ -232,3 +232,11 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bind_instead_of_map"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/bind_instead_of_map"
+# Checks for the usage of the to_be_bytes method and/or the function from_be_bytes.
+[big_endian_bytes]
+group = "restriction"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+big_endian_bytes"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/big_endian_bytes"

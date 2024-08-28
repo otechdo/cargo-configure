@@ -319,3 +319,14 @@ pub const BIND_INSTEAD_OF_MAP_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Complexity,
     Applicability::MachineApplicable,
 );
+
+#[doc = "big_endian_bytes lint for all"]
+pub const BIG_ENDIAN_BYTES_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "big_endian_bytes",
+    "Checks for the usage of the to_be_bytes method and/or the function from_be_bytes.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::Unspecified,
+);
