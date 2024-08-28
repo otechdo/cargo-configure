@@ -184,3 +184,11 @@ applicability = "maybe-incorrect"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bool_to_int_with_if"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/bool_to_int_with_if"
+# Checks for expressions of the form x == true, x != true and order comparisons such as x < true (or vice versa) and suggest using the variable directly.
+[bool_comparison]
+group = "complexity"
+applicability = "machine-applicable"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bool_comparison"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/bool_comparison"

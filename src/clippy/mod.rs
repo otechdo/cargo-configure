@@ -253,3 +253,14 @@ pub const BOOL_TO_INT_WITH_IF_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Pedantic,
     Applicability::MaybeIncorrect,
 );
+
+#[doc = "bool_comparison lint for all"]
+pub const BOOL_COMPARISON_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "bool_comparison",
+"Checks for expressions of the form x == true, x != true and order comparisons such as x < true (or vice versa) and suggest using the variable directly.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Complexity,
+    Applicability::MachineApplicable,
+);
