@@ -301,10 +301,21 @@ pub const BORROW_INTERIOR_MUTABLE_CONST_LINTS: (Lint, Lint, Lint) = Lint::new(
 #[doc = "borrow_as_ptr lint for all"]
 pub const BORROW_AS_PTR_LINTS: (Lint, Lint, Lint) = Lint::new(
     "borrow_as_ptr",
-    "CheChecks for the usage of &expr as *const T or &mut expr as *mut T, and suggest using ptr::addr_of or ptr::addr_of_mut instead.",
+    "Checks for the usage of &expr as *const T or &mut expr as *mut T, and suggest using ptr::addr_of or ptr::addr_of_mut instead.",
     &Severity::Warn,
     &Severity::Warn,
     &Severity::Deny,
     ClippyGroup::Pedantic,
+    Applicability::MachineApplicable,
+);
+
+#[doc = "bind_instead_of_map lint for all"]
+pub const BIND_INSTEAD_OF_MAP_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "bind_instead_of_map",
+    "Checks for usage of _.and_then(|x| Some(y)), _.and_then(|x| Ok(y)) or _.or_else(|x| Err(y)).",
+    &Severity::Warn,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Complexity,
     Applicability::MachineApplicable,
 );

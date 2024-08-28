@@ -216,7 +216,7 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrow_interior_mutable_const"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrow_interior_mutable_const"
-# CheChecks for the usage of &expr as *const T or &mut expr as *mut T, and suggest using ptr::addr_of or ptr::addr_of_mut instead.
+# Checks for the usage of &expr as *const T or &mut expr as *mut T, and suggest using ptr::addr_of or ptr::addr_of_mut instead.
 [borrow_as_ptr]
 group = "pedantic"
 applicability = "machine-applicable"
@@ -224,3 +224,11 @@ applicability = "machine-applicable"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrow_as_ptr"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrow_as_ptr"
+# Checks for usage of _.and_then(|x| Some(y)), _.and_then(|x| Ok(y)) or _.or_else(|x| Err(y)).
+[bind_instead_of_map]
+group = "complexity"
+applicability = "machine-applicable"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bind_instead_of_map"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/bind_instead_of_map"
