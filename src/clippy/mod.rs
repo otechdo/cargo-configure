@@ -297,3 +297,14 @@ pub const BORROW_INTERIOR_MUTABLE_CONST_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Style,
     Applicability::Unspecified,
 );
+
+#[doc = "borrow_as_ptr lint for all"]
+pub const BORROW_AS_PTR_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "borrow_as_ptr",
+    "CheChecks for the usage of &expr as *const T or &mut expr as *mut T, and suggest using ptr::addr_of or ptr::addr_of_mut instead.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Pedantic,
+    Applicability::MachineApplicable,
+);
