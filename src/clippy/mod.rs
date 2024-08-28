@@ -330,3 +330,14 @@ pub const BIG_ENDIAN_BYTES_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Restriction,
     Applicability::Unspecified,
 );
+
+#[doc = "borrow_deref_ref lint for all"]
+pub const BORROW_DEREF_REF_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "borrow_deref_ref",
+    "Checks for &*(&T).",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Complexity,
+    Applicability::Unspecified,
+);

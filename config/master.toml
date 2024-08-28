@@ -192,6 +192,14 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrow_as_ptr"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrow_as_ptr"
+# Checks for &*(&T).
+[borrow_deref_ref]
+group = "complexity"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrow_deref_ref"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrow_deref_ref"
 # Checks if const items which is interior mutable (e.g., contains a Cell, Mutex, AtomicXxxx, etc.) has been borrowed directly.
 [borrow_interior_mutable_const]
 group = "style"
