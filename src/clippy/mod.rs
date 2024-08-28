@@ -19,9 +19,19 @@ pub const ALLOW_ATTRIBUTES_WITHOUT_REASON_LINTS: (Lint, Lint, Lint) = Lint::new(
     &Severity::Warn,
     &Severity::Deny,
     ClippyGroup::Restriction,
-    Applicability::Unspecified,
+    Applicability::MachineApplicable,
 );
 
+#[doc = "The allow attribute for all"]
+pub const ALLOW_ATTRIBUTES: (Lint, Lint, Lint) = Lint::new(
+    "allow_attributes",
+    "Checks for usage of the #[allow] attribute and suggests replacing it with the #[expect]",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::MachineApplicable,
+);
 #[doc = "The almost complete range lints for all"]
 pub const ALMOST_COMPLETE_RANGE_LINTS: (Lint, Lint, Lint) = Lint::new(
     "almost_complete_range",
@@ -187,4 +197,15 @@ pub const ASYNC_YIELDS_ASYNC_LINTS: (Lint, Lint, Lint) = Lint::new(
     &Severity::Deny,
     ClippyGroup::Correctness,
     Applicability::MaybeIncorrect,
+);
+
+#[doc = "let_and_return lint for all"]
+pub const LET_AND_RETURN_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "let_and_return",
+    "Checks for let-bindings, which are subsequently returned.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::Unspecified,
 );
