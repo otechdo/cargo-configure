@@ -264,3 +264,14 @@ pub const BOOL_COMPARISON_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Complexity,
     Applicability::MachineApplicable,
 );
+
+#[doc = "blanket_clippy_restriction_lints for all"]
+pub const BLANKET_CLIPPY_RESTRICTION_LINTS_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "blanket_clippy_restriction_lints",
+    "Checks for warn/deny/forbid attributes targeting the whole clippy::restriction category.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Suspicious,
+    Applicability::MachineApplicable,
+);
