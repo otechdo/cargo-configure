@@ -208,3 +208,11 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrowed_box"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrowed_box"
+# Checks if const items which is interior mutable (e.g., contains a Cell, Mutex, AtomicXxxx, etc.) has been borrowed directly.
+[borrow_interior_mutable_const]
+group = "style"
+applicability = "unspecified"
+# allow < warn > deny
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrow_interior_mutable_const"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrow_interior_mutable_const"

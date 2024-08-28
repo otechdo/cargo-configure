@@ -286,3 +286,14 @@ pub const BORROWED_BOX_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Complexity,
     Applicability::Unspecified,
 );
+
+#[doc = "borrow_interior_mutable_const lint for all"]
+pub const BORROW_INTERIOR_MUTABLE_CONST_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "borrow_interior_mutable_const",
+    "Checks if const items which is interior mutable (e.g., contains a Cell, Mutex, AtomicXxxx, etc.) has been borrowed directly.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Style,
+    Applicability::Unspecified,
+);
