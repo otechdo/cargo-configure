@@ -112,3 +112,11 @@ applicability = "unspecified"
 severity = "warn"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_lock"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/await_holding_lock"
+# Allows users to configure types which should not be held across await suspension points.
+[await_holding_invalid_type]
+group = "suspicious"
+applicability = "unspecified"
+# allow < warn > deny
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+await_holding_invalid_type"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/await_holding_invalid_type"

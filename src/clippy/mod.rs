@@ -155,3 +155,14 @@ pub const AWAIT_HOLDING_LOCK_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Suspicious,
     Applicability::Unspecified,
 );
+
+#[doc = "await_holding_lock lint for all"]
+pub const AWAIT_HOLDING_INVALID_TYPE_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "await_holding_invalid_type",
+    "Allows users to configure types which should not be held across await suspension points.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Suspicious,
+    Applicability::Unspecified,
+);
