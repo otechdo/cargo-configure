@@ -192,3 +192,11 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bool_comparison"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/bool_comparison"
+# Checks for warn/deny/forbid attributes targeting the whole clippy::restriction category.
+[blanket_clippy_restriction_lints]
+group = "suspicious"
+applicability = "machine-applicable"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blanket_clippy_restriction_lints"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/blanket_clippy_restriction_lints"
