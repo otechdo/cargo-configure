@@ -268,10 +268,21 @@ pub const BOOL_COMPARISON_LINTS: (Lint, Lint, Lint) = Lint::new(
 #[doc = "blanket_clippy_restriction_lints for all"]
 pub const BLANKET_CLIPPY_RESTRICTION_LINTS_LINTS: (Lint, Lint, Lint) = Lint::new(
     "blanket_clippy_restriction_lints",
-    "Checks for warn/deny/forbid attributes targeting the whole clippy::restriction category.",
+    "Checks for warn/deny/forbid attributes targeting the whole restriction category.",
     &Severity::Deny,
     &Severity::Deny,
     &Severity::Deny,
     ClippyGroup::Suspicious,
     Applicability::MachineApplicable,
+);
+
+#[doc = "borrowed_box lint for all"]
+pub const BORROWED_BOX_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "borrowed_box",
+    "Checks for usage of &Box<T> anywhere in the code. Check the Box documentation for more information.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Complexity,
+    Applicability::Unspecified,
 );

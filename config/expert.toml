@@ -192,7 +192,7 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+bool_comparison"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/bool_comparison"
-# Checks for warn/deny/forbid attributes targeting the whole clippy::restriction category.
+# Checks for warn/deny/forbid attributes targeting the whole restriction category.
 [blanket_clippy_restriction_lints]
 group = "suspicious"
 applicability = "machine-applicable"
@@ -200,3 +200,11 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blanket_clippy_restriction_lints"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/blanket_clippy_restriction_lints"
+# Checks for usage of &Box<T> anywhere in the code. Check the Box documentation for more information.
+[borrowed_box]
+group = "complexity"
+applicability = "unspecified"
+# allow < warn > deny
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+borrowed_box"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/borrowed_box"
