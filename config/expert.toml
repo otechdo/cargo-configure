@@ -38,8 +38,7 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+almost_swaped"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/almost_swaped"
-# 
-Checks for floating point literals that approximate constants which are defined in std::f32::consts or std::f64::consts, respectively, suggesting to use the predefined constant.
+# Checks for floating point literals that approximate constants which are defined in std::f32::consts or std::f64::consts, respectively, suggesting to use the predefined constant.
 [approx_constant]
 group = "correctness"
 applicability = "unspecified"
@@ -159,8 +158,7 @@ applicability = "machine-applicable"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+blanket_clippy_restriction_lints"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/blanket_clippy_restriction_lints"
-# 
-Checks for if and match conditions that use blocks containing an expression, statements or conditions that use closures with blocks.
+# Checks for if and match conditions that use blocks containing an expression, statements or conditions that use closures with blocks.
 [blocks_in_conditions]
 group = "style"
 applicability = "machine-applicable"

@@ -68,8 +68,7 @@ pub const ASSIGNING_CLONES_LINTS: (Lint, Lint, Lint) = Lint::new(
 #[doc = "The block in condition lints for all"]
 pub const BLOCKS_IN_CONDITIONS_LINTS: (Lint, Lint, Lint) = Lint::new(
     "blocks_in_conditions",
-    "
-Checks for if and match conditions that use blocks containing an expression, statements or conditions that use closures with blocks.",
+    "Checks for if and match conditions that use blocks containing an expression, statements or conditions that use closures with blocks.",
     &Severity::Warn,
     &Severity::Warn,
     &Severity::Deny,
@@ -80,8 +79,7 @@ Checks for if and match conditions that use blocks containing an expression, sta
 #[doc = "The approx_constant lint for all"]
 pub const APPROX_CONSTANT_LINTS: (Lint, Lint, Lint) = Lint::new(
     "approx_constant",
-    "
-Checks for floating point literals that approximate constants which are defined in std::f32::consts or std::f64::consts, respectively, suggesting to use the predefined constant.",
+    "Checks for floating point literals that approximate constants which are defined in std::f32::consts or std::f64::consts, respectively, suggesting to use the predefined constant.",
     &Severity::Deny,
     &Severity::Deny,
     &Severity::Deny,
