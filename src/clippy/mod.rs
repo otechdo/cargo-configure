@@ -352,3 +352,113 @@ pub const BOX_COLLECTION_LINTS: (Lint, Lint, Lint) = Lint::new(
     ClippyGroup::Perf,
     Applicability::Unspecified,
 );
+
+#[doc = "declare_interior_mutable_const lint for all"]
+pub const DECLARE_INTERIOR_MUTABLE_CONST_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "declare_interior_mutable_const",
+    "Checks for declaration of const items which is interior mutable (e.g., contains a Cell, Mutex, AtomicXxxx, etc.).",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Style,
+    Applicability::Unspecified,
+);
+
+#[doc = "decimal_literal_representation lint for all"]
+pub const DECIMAL_LITERAL_REPRESENTATION_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "decimal_literal_representation",
+    "Warns if there is a better representation for a numeric literal.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::Unspecified,
+);
+
+#[doc = "debug_assert_with_mut_call lint for all"]
+pub const DEBUG_ASSERT_WITH_MUT_CALL_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "debug_debug_assert_with_mut_call",
+    "Checks for function/method calls with a mutable parameter in debug_assert!, debug_assert_eq! and debug_assert_ne! macros.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Complexity,
+    Applicability::Unspecified,
+);
+
+#[doc = "dbg_macro lint for all"]
+pub const DBG_MACRO_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "dbg_macro",
+    "Checks for usage of the dbg! macro.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Perf,
+    Applicability::Unspecified,
+);
+
+#[doc = "crate_in_macro_def lint for all"]
+pub const CRATE_IN_MACRO_DEF_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "crate_in_macro_def",
+    "Warns if there is a better representation for a numeric literal.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Suspicious,
+    Applicability::MachineApplicable,
+);
+
+#[doc = "create_dir lint for all"]
+pub const CREATE_DIR_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "create_dir",
+    "Checks usage of std::fs::create_dir and suggest using std::fs::create_dir_all instead.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Restriction,
+    Applicability::MaybeIncorrect,
+);
+
+#[doc = "crosspointer_transmute lint for all"]
+pub const CROSSPOINTER_TRANSMUTE_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "crosspointer_transmute",
+    "Checks for transmutes between a type T and *T.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Complexity,
+    Applicability::Unspecified,
+);
+
+#[doc = "copy_iterator lint for all"]
+pub const COPY_ITERATOR_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "copy_iterator",
+    "Checks for types that implement Copy as well as Iterator.",
+    &Severity::Allow,
+    &Severity::Warn,
+    &Severity::Deny,
+    ClippyGroup::Pedantic,
+    Applicability::Unspecified,
+);
+
+#[doc = "const_is_empty lint for all"]
+pub const CONST_IS_EMPTY_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "const_is_empty",
+    "It identifies calls to .is_empty() on constant values.",
+    &Severity::Deny,
+    &Severity::Deny,
+    &Severity::Deny,
+    ClippyGroup::Suspicious,
+    Applicability::Unspecified,
+);
+
+#[doc = "comparison_to_empty lint for all"]
+pub const COMPARISON_TO_EMPTY_LINTS: (Lint, Lint, Lint) = Lint::new(
+    "comparison_to_empty",
+    "Checks for comparing to an empty slice such as \"\" or [], and suggests using .is_empty() where applicable.",
+    &Severity::Warn,
+    &Severity::Warn,
+    &Severity::Warn,
+    ClippyGroup::Style,
+    Applicability::MachineApplicable,
+);

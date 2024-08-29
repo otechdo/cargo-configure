@@ -224,6 +224,86 @@ applicability = "unspecified"
 severity = "deny"
 issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+box_collection"
 info = "https://rust-lang.github.io/rust-clippy/master/index.html#/box_collection"
+# Checks for comparing to an empty slice such as "" or [], and suggests using .is_empty() where applicable.
+[comparison_to_empty]
+group = "style"
+applicability = "machine-applicable"
+# allow < warn > deny
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+comparison_to_empty"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/comparison_to_empty"
+# It identifies calls to .is_empty() on constant values.
+[const_is_empty]
+group = "suspicious"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+const_is_empty"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/const_is_empty"
+# Checks for types that implement Copy as well as Iterator.
+[copy_iterator]
+group = "pedantic"
+applicability = "unspecified"
+# none < allow > warn deny
+severity = "allow"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+copy_iterator"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/copy_iterator"
+# Warns if there is a better representation for a numeric literal.
+[crate_in_macro_def]
+group = "suspicious"
+applicability = "machine-applicable"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+crate_in_macro_def"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/crate_in_macro_def"
+# Checks usage of std::fs::create_dir and suggest using std::fs::create_dir_all instead.
+[create_dir]
+group = "restriction"
+applicability = "maybe-incorrect"
+# none < allow > warn deny
+severity = "allow"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+create_dir"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/create_dir"
+# Checks for transmutes between a type T and *T.
+[crosspointer_transmute]
+group = "complexity"
+applicability = "unspecified"
+# allow < warn > deny
+severity = "warn"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+crosspointer_transmute"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/crosspointer_transmute"
+# Checks for usage of the dbg! macro.
+[dbg_macro]
+group = "perf"
+applicability = "unspecified"
+# none < allow > warn deny
+severity = "allow"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+dbg_macro"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/dbg_macro"
+# Checks for function/method calls with a mutable parameter in debug_assert!, debug_assert_eq! and debug_assert_ne! macros.
+[debug_debug_assert_with_mut_call]
+group = "complexity"
+applicability = "unspecified"
+# none < allow > warn deny
+severity = "allow"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+debug_debug_assert_with_mut_call"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/debug_debug_assert_with_mut_call"
+# Warns if there is a better representation for a numeric literal.
+[decimal_literal_representation]
+group = "restriction"
+applicability = "unspecified"
+# none < allow > warn deny
+severity = "allow"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+decimal_literal_representation"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/decimal_literal_representation"
+# Checks for declaration of const items which is interior mutable (e.g., contains a Cell, Mutex, AtomicXxxx, etc.).
+[declare_interior_mutable_const]
+group = "style"
+applicability = "unspecified"
+# allow warn < deny > none
+severity = "deny"
+issue = "https://github.com/rust-lang/rust-clippy/issues?q=is%3Aissue+declare_interior_mutable_const"
+info = "https://rust-lang.github.io/rust-clippy/master/index.html#/declare_interior_mutable_const"
 # Checks for Mutex::lock calls in if let expression with lock calls in any of the else blocks.
 [if_let_mutex]
 group = "correctness"
