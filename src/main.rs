@@ -14,10 +14,9 @@ use std::{
 
 use inquire::{Confirm, MultiSelect, Select};
 
-const CLIPPY_GROUPS: [&str; 9] = [
+const CLIPPY_GROUPS: [&str; 8] = [
     "cargo",
     "complexity",
-    "restriction",
     "style",
     "nursery",
     "pedantic",
@@ -26,8 +25,18 @@ const CLIPPY_GROUPS: [&str; 9] = [
     "perf",
 ];
 
-fn decrease(g: &mut Vec<String>, data: Vec<String>) {
-    for d in &data {
+const HOOKS: [&str; 7] = [
+    "verify-project",
+    "check --all-targets --profile=test",
+    "deny check",
+    "audit",
+    "test -j 4 --no-fail-fast -- --show-output",
+    "fmt --check",
+    "outdated",
+];
+
+fn decrease(g: &mut Vec<String>, data: &[String]) {
+    for d in data {
         g.retain(|x| !x.eq(d));
     }
 }
@@ -39,22 +48,23 @@ fn generate_zuu() -> Result<(), Error> {
 
     let mut groups: Vec<String> = CLIPPY_GROUPS.map(String::from).to_vec();
     let allowed = MultiSelect::new("Select the allowed groups : ", groups.clone())
-        .with_default(&[0, 2, 4, 5])
         .prompt()
-        .unwrap_or_default();
+        .unwrap_or_else(|_| Vec::from(["cargo".to_string(), "pedantic".to_string()]));
 
-    decrease(&mut groups, allowed.to_vec());
+    decrease(&mut groups, &allowed.clone());
 
     let warn = MultiSelect::new("Select the warning groups : ", groups.clone())
         .prompt()
-        .unwrap_or(groups.to_vec());
+        .unwrap_or_else(|_| groups.clone());
 
-    decrease(&mut groups, warn.to_vec());
+    decrease(&mut groups, &warn.clone());
 
-    write!(
+    assert!(write!(
         zuu,
-        "allow = {allowed:?}\nwarn = {warn:?}\ndeny = {groups:?}"
+        "allow = {allowed:?}\nwarn = {warn:?}\nforbid = {groups:?}\nbefore-cargo = []\ncargo = {HOOKS:?}\nafter-cargo = []"
     )
+    .is_ok());
+    Ok(())
 }
 
 fn generate_deny() -> Result<(), Error> {
@@ -121,7 +131,7 @@ fn create_project() -> Result<(), Error> {
         .current_dir(".")
         .spawn()
     {
-        assert!(child.wait()?.success());
+        assert!(child.wait()?.success(), "failed");
         return Ok(());
     }
     Err(Error::last_os_error())
