@@ -9,3 +9,6 @@ categories = ["development-tools"]
 repository = "https://github.com/otechdo/cargo-configure"
 authors = ["Willy Micieli"]
 readme = "README.md"
+
+[dependencies]
+inquire = { version = "0.7.5", features = ["console"] }
