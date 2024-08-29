@@ -12,7 +12,7 @@ use std::{
     process::Command,
 };
 
-use inquire::MultiSelect;
+use inquire::{Confirm, MultiSelect, Select};
 
 const CLIPPY_GROUPS: [&str; 9] = [
     "cargo",
@@ -78,7 +78,53 @@ fn configure_zuu() -> Result<(), Error> {
 }
 fn configure() -> Result<(), Error> {
     assert!(configure_zuu().is_ok());
-    generate_deny()
+    assert!(generate_deny().is_ok());
+    create_project()
+}
+
+fn create_project() -> Result<(), Error> {
+    if Path::new("Cargo.toml").exists() {
+        return Err(Error::new(
+            ErrorKind::AlreadyExists,
+            "Cargo project already exist",
+        ));
+    }
+    let vcs: &str = Select::new(
+        "Enter the project name : ",
+        vec!["git", "hg", "pijul", "fossil", "none"],
+    )
+    .prompt()
+    .unwrap_or("git");
+    let program = Confirm::new("Create a a new software ? : ")
+        .with_default(true)
+        .prompt()
+        .unwrap_or_default();
+    if program {
+        if let Ok(mut child) = Command::new("cargo")
+            .arg("init")
+            .arg("--bin")
+            .arg("--vcs")
+            .arg(vcs)
+            .current_dir(".")
+            .spawn()
+        {
+            assert!(child.wait()?.success());
+            return Ok(());
+        }
+        return Err(Error::last_os_error());
+    }
+    if let Ok(mut child) = Command::new("cargo")
+        .arg("init")
+        .arg("--lib")
+        .arg("--vcs")
+        .arg(vcs)
+        .current_dir(".")
+        .spawn()
+    {
+        assert!(child.wait()?.success());
+        return Ok(());
+    }
+    Err(Error::last_os_error())
 }
 ///
 /// Configure a project
