@@ -78,8 +78,8 @@ fn configure_zuu() -> Result<(), Error> {
 }
 fn configure() -> Result<(), Error> {
     assert!(configure_zuu().is_ok());
-    assert!(generate_deny().is_ok());
-    create_project()
+    assert!(create_project().is_ok());
+    generate_deny()
 }
 
 fn create_project() -> Result<(), Error> {
@@ -90,7 +90,7 @@ fn create_project() -> Result<(), Error> {
         ));
     }
     let vcs: &str = Select::new(
-        "Enter the project name : ",
+        "Enter the versionning file systems for your project : ",
         vec!["git", "hg", "pijul", "fossil", "none"],
     )
     .prompt()
